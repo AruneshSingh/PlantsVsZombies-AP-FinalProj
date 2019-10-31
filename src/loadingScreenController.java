@@ -1,7 +1,6 @@
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.awt.event.MouseEvent;
+import javafx.scene.input.MouseEvent;
 
 public class loadingScreenController {
 
@@ -22,4 +21,3 @@ public class loadingScreenController {
         button.setImage(new Image("images/existingPlayerPlank.png"));
     }
 }
-
