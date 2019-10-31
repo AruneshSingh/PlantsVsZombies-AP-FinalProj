@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/loadingScreen.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/playerSelection.fxml"));
 //        Image newPlayerPlankImage = new Image(getClass().getResourceAsStream("images/newPlayerPlank.png"));
 //        Image existingPlayerPlankImage = new Image(getClass().getResourceAsStream("images/existingPlayerPlank.png"));
 //        Image hoverNewPlayerPlankImage = new Image(getClass().getResourceAsStream("images/newPlayerPlankSelected.png"));
@@ -81,7 +81,7 @@ public class Main extends Application {
 //                BackgroundSize.DEFAULT)));
 //        scene1 = new Scene(layout1,1280,720);
         primaryStage.setTitle("Plants Vs. Zombies");
-//        primaryStage.setScene(scene1);
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

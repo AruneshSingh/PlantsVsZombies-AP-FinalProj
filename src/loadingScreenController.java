@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 import java.awt.event.MouseEvent;
 
 public class loadingScreenController {
+
     public void hoverOverNewButton(MouseEvent mouseEvent) {
         ImageView button = (ImageView) mouseEvent.getSource();
         button.setImage(new Image("images/newPlayerPlankSelected.png"));
