@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="newPlayerMenuController">
    <children>
       <ImageView fitHeight="735.0" fitWidth="1335.0" layoutX="-8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -17,7 +17,7 @@
          <font>
             <Font name="Calibri" size="22.0" />
          </font></TextField>
-      <ImageView fitHeight="116.0" fitWidth="246.0" layoutX="522.0" layoutY="558.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="116.0" fitWidth="246.0" layoutX="522.0" layoutY="558.0" onMouseClicked="#startButtonClick" onMouseEntered="#hoverOverStartButton" onMouseExited="#hoverOutStartButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/startPlank.png" />
          </image>

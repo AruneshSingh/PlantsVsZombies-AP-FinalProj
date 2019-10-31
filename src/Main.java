@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/playerSelection.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/loadingScreen.fxml"));
 //        Image newPlayerPlankImage = new Image(getClass().getResourceAsStream("images/newPlayerPlank.png"));
 //        Image existingPlayerPlankImage = new Image(getClass().getResourceAsStream("images/existingPlayerPlank.png"));
 //        Image hoverNewPlayerPlankImage = new Image(getClass().getResourceAsStream("images/newPlayerPlankSelected.png"));

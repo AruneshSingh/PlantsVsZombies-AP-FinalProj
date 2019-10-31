@@ -11,7 +11,7 @@
             <Image url="@../images/playerSelection.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="165.0" fitWidth="395.0" layoutX="156.0" layoutY="326.0" onMouseEntered="#hoverOverNewButton" onMouseExited="#hoverOutNewButton" pickOnBounds="true" preserveRatio="true" styleClass="btn">
+      <ImageView fitHeight="165.0" fitWidth="395.0" layoutX="156.0" layoutY="326.0" onMouseClicked="#newButtonClick" onMouseEntered="#hoverOverNewButton" onMouseExited="#hoverOutNewButton" pickOnBounds="true" preserveRatio="true" styleClass="btn">
          <image>
             <Image url="@../images/newPlayerPlank.png" />
          </image>
