@@ -4,7 +4,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="loadingScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="playerSelectionController">
    <children>
       <ImageView fitHeight="735.0" fitWidth="1335.0" layoutX="-8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -13,10 +13,10 @@
       </ImageView>
       <ImageView fitHeight="165.0" fitWidth="395.0" layoutX="156.0" layoutY="326.0" onMouseEntered="#hoverOverNewButton" onMouseExited="#hoverOutNewButton" pickOnBounds="true" preserveRatio="true" styleClass="btn">
          <image>
-            <Image url="@../images/newPlayerPlank.png" />+
+            <Image url="@../images/newPlayerPlank.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="241.0" fitWidth="373.0" layoutX="778.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="241.0" fitWidth="373.0" layoutX="778.0" layoutY="326.0" onMouseEntered="#hoverOverExistingButton" onMouseExited="#hoverOutExistingButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/existingPlayerPlank.png" />
          </image>

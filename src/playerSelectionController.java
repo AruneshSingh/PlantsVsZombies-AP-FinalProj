@@ -2,7 +2,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class loadingScreenController {
+public class playerSelectionController {
 
     public void hoverOverNewButton(MouseEvent mouseEvent) {
         ImageView button = (ImageView) mouseEvent.getSource();
@@ -10,7 +10,7 @@ public class loadingScreenController {
     }
     public void hoverOutNewButton(MouseEvent mouseEvent) {
         ImageView button = (ImageView) mouseEvent.getSource();
-        button.setImage(new Image("images/playerSelection.png"));
+        button.setImage(new Image("images/newPlayerPlank.png"));
     }
     public void hoverOverExistingButton(MouseEvent mouseEvent) {
         ImageView button = (ImageView) mouseEvent.getSource();
