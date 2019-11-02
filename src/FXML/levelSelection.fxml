@@ -11,27 +11,27 @@
                   <Image url="@../images/levelSelection.png" />
               </image>
           </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="159.0" layoutX="152.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="1" fitHeight="60.0" fitWidth="159.0" layoutX="152.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv1BW.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="159.0" layoutX="362.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="2" fitHeight="60.0" fitWidth="159.0" layoutX="362.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv2BW.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="159.0" layoutX="569.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="3" fitHeight="60.0" fitWidth="159.0" layoutX="569.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv3BW.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="159.0" layoutX="781.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="4" fitHeight="60.0" fitWidth="159.0" layoutX="781.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv4BW.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="159.0" layoutX="998.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="5" fitHeight="60.0" fitWidth="159.0" layoutX="998.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv5BW.png" />
          </image>
