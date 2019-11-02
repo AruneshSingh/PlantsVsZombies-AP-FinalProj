@@ -32,5 +32,9 @@ public class mainMenuController {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/newPlayerMenu.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.show();
+    }
+    public void exitButtonClick(MouseEvent mouseEvent) {
+        System.exit(0);
     }
 }

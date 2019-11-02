@@ -12,6 +12,6 @@ public class loadingScreenController {
         Parent root = FXMLLoader.load(getClass().getResource("FXML/mainMenu.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-//        stage.show();
+        stage.show();
     }
 }

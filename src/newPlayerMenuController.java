@@ -22,5 +22,6 @@ public class newPlayerMenuController {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("FXML/mainYard.fxml"));
         stage.setScene(new Scene(root));
+        stage.show();
     }
 }
