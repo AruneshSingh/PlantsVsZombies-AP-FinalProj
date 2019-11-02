@@ -51,7 +51,7 @@
             <ImageView fitHeight="80.0" fitWidth="98.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
             <ImageView fitHeight="80.0" fitWidth="98.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" />
             <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
-            <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
+            <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#imagePaneDrop" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" />
             <ImageView fitHeight="80.0" fitWidth="96.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
             <ImageView fitHeight="80.0" fitWidth="95.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" />
             <ImageView fitHeight="80.0" fitWidth="101.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" />
@@ -61,6 +61,7 @@
             <ImageView fitHeight="80.0" fitWidth="98.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <ImageView fitHeight="80.0" fitWidth="98.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+            <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#imagePaneDrop" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1" />
             <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
             <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1" />
             <ImageView fitHeight="80.0" fitWidth="99.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1" />
@@ -142,6 +143,11 @@
       <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1175.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/menuIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="262.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/shovel.png" />
          </image>
       </ImageView>
    </children>
