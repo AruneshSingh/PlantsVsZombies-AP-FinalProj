@@ -46,13 +46,13 @@ public class mainYardController {
                     clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
                     break;
                 case "snowPeaShooter":
-                    clickedAndDragged = (new Image("images/plants/snowPeaPlant.png"));
+                    clickedAndDragged = (new Image("images/plants/snowPeaPlant.gif"));
                     break;
                 case "walnut":
                     clickedAndDragged = (new Image("images/plants/walnutFullLife.gif"));
                     break;
                 case "cherrybomb":
-                    clickedAndDragged = (new Image("images/plants/cherryBombPlant.png"));
+                    clickedAndDragged = (new Image("images/plants/cherryBombPlant.gif"));
                     break;
 
             }
