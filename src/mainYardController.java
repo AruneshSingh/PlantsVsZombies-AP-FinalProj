@@ -7,7 +7,7 @@ import javafx.scene.input.MouseEvent;
 
 public class mainYardController {
     private Image clickedAndDragged;
-    public void dragEnteredPane(MouseDragEvent mouseEvent){
+    public void dragEnteredPane(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
         if(paneElement.getImage() == null && clickedAndDragged != null){
             paneElement.setImage(clickedAndDragged);
@@ -16,7 +16,7 @@ public class mainYardController {
         System.out.println("RanEntered");
     }
 
-    public void dragExitPane(MouseDragEvent mouseEvent){
+    public void dragExitPane(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
         if(paneElement.getImage() != null && clickedAndDragged != null){
             paneElement.setImage(null);
@@ -24,7 +24,7 @@ public class mainYardController {
         }
         System.out.println("RanExit");
     }
-    public void mouseClicked(MouseEvent mouseEvent){
+    public void mouseClicked(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
         switch (paneElement.getId()){
             case "sunflower":
@@ -45,6 +45,15 @@ public class mainYardController {
 
         }
         System.out.println("Clicked");
+    }
+    public void imagePaneDrop(MouseEvent mouseEvent) {
+        ImageView paneElement = (ImageView) mouseEvent.getSource();
+        if(clickedAndDragged !=null) {
+            paneElement.setImage(clickedAndDragged);
+            clickedAndDragged = null;
+            System.out.println("Dropped");
+        }
+        System.out.println("Ran");
     }
 }
 
