@@ -1,3 +1,4 @@
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -10,6 +11,8 @@ import java.util.Set;
 
 public class mainYardController {
     private Image clickedAndDragged;
+    private  ImageView shovelPane;
+    private boolean shovelActive;
     private Set<String> placedPlants;
     public mainYardController(){
         placedPlants = new HashSet<String>();
@@ -34,19 +37,19 @@ public class mainYardController {
     }
     public void mouseClicked(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
-        if(!placedPlants.contains(paneElement.toString())) {
+        if(!placedPlants.contains(paneElement.toString())&& shovelActive != true) {
             switch (paneElement.getId()) {
                 case "sunflower":
-                    clickedAndDragged = (new Image("images/plants/sunflowerPlant.png"));
+                    clickedAndDragged = (new Image("images/plants/sunflower.gif"));
                     break;
                 case "peashooter":
-                    clickedAndDragged = (new Image("images/plants/peashooterPlant.png"));
+                    clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
                     break;
                 case "snowPeaShooter":
                     clickedAndDragged = (new Image("images/plants/snowPeaPlant.png"));
                     break;
                 case "walnut":
-                    clickedAndDragged = (new Image("images/plants/walnutPlant.png"));
+                    clickedAndDragged = (new Image("images/plants/walnutFullLife.gif"));
                     break;
                 case "cherrybomb":
                     clickedAndDragged = (new Image("images/plants/cherryBombPlant.png"));
@@ -64,7 +67,29 @@ public class mainYardController {
             placedPlants.add(paneElement.toString());
 //            System.out.println("Dropped");
         }
-//        System.out.println("Ran");
+        else if(shovelActive==true && placedPlants.contains(paneElement.toString())) {
+            paneElement.setImage(null);
+            placedPlants.remove(paneElement.getId());
+            shovelPane.setEffect(null);
+            shovelActive = false;
+//            System.out.println("Shoveled");
+        }
+//        System.out.println("Ran "+ placedPlants.contains(paneElement.getId()));
     }
-//    public void
+
+    public void shovelAction(MouseEvent mouseEvent) {
+        shovelPane = (ImageView) mouseEvent.getSource();
+        if(shovelActive){
+            shovelPane.setEffect(null);
+            shovelActive = false;
+        }
+        else {
+            ColorAdjust colorAdjust = new ColorAdjust();
+            colorAdjust.setBrightness(0.5);
+            shovelPane.setEffect(colorAdjust);
+            shovelActive = true;
+        }
+
+//        System.out.println(shovelActive);
+    }
 }
