@@ -11,27 +11,27 @@
                   <Image url="@../images/levelSelection.png" />
               </image>
           </ImageView>
-      <ImageView id="1" fitHeight="60.0" fitWidth="159.0" layoutX="152.0" layoutY="468.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="1" fitHeight="171.0" fitWidth="141.0" layoutX="152.0" layoutY="357.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv1BW.png" />
          </image>
       </ImageView>
-      <ImageView id="2" fitHeight="60.0" fitWidth="159.0" layoutX="362.0" layoutY="468.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="2" fitHeight="171.0" fitWidth="129.0" layoutX="362.0" layoutY="357.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv2BW.png" />
          </image>
       </ImageView>
-      <ImageView id="3" fitHeight="60.0" fitWidth="142.0" layoutX="569.0" layoutY="468.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="3" fitHeight="177.0" fitWidth="129.0" layoutX="572.0" layoutY="357.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv3BW.png" />
          </image>
       </ImageView>
-      <ImageView id="4" fitHeight="60.0" fitWidth="159.0" layoutX="781.0" layoutY="468.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="4" fitHeight="171.0" fitWidth="129.0" layoutX="781.0" layoutY="357.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv4BW.png" />
          </image>
       </ImageView>
-      <ImageView id="5" fitHeight="60.0" fitWidth="159.0" layoutX="998.0" layoutY="468.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="5" fitHeight="171.0" fitWidth="146.0" layoutX="998.0" layoutY="357.0" onMouseEntered="#levelHoverIn" onMouseExited="#levelHoverOut" onMousePressed="#levelSelection" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lv5BW.png" />
          </image>
