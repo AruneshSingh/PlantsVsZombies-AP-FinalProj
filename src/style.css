@@ -1,3 +1,4 @@
 .btn {
-    background-color: transparent
+    -fx-background-color: #ffffff;
+    -fx-border-width: 1;
 }
