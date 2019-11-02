@@ -58,7 +58,7 @@ public class mainYardController {
     }
     public void imagePaneDrop(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
-        if(clickedAndDragged !=null) {
+        if(clickedAndDragged !=null && !placedPlants.contains(paneElement.toString())) {
             paneElement.setImage(clickedAndDragged);
             clickedAndDragged = null;
             placedPlants.add(paneElement.toString());
@@ -66,4 +66,5 @@ public class mainYardController {
         }
 //        System.out.println("Ran");
     }
+//    public void
 }
