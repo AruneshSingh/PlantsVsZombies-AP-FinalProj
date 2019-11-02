@@ -16,12 +16,12 @@
             <Image url="@../images/yardBG.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/sunTokenCounter.png" />
          </image>
       </ImageView>
-      <Label layoutX="144.0" layoutY="65.0" text="Label" textFill="#8a3a18">
+      <Label layoutX="147.0" layoutY="40.0" text="Label" textFill="#8a3a18">
          <font>
             <Font name="Calibri Bold" size="25.0" />
          </font>
@@ -114,29 +114,34 @@
                </image></ImageView>
          </children>
       </GridPane>
-      <ImageView fx:id="sunflower" fitHeight="109.0" fitWidth="138.0" layoutX="85.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sunflower" fitHeight="109.0" fitWidth="138.0" layoutX="82.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/sunflowerSelector.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="peashooter" fitHeight="109.0" fitWidth="138.0" layoutX="85.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="peashooter" fitHeight="109.0" fitWidth="138.0" layoutX="82.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/peaSelector.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="snowPeaShooter" fitHeight="109.0" fitWidth="138.0" layoutX="85.0" layoutY="353.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="snowPeaShooter" fitHeight="109.0" fitWidth="138.0" layoutX="82.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/snowPeaSelector.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="walnut" fitHeight="109.0" fitWidth="138.0" layoutX="85.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="walnut" fitHeight="109.0" fitWidth="138.0" layoutX="82.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/walnutSelector.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cherrybomb" fitHeight="109.0" fitWidth="138.0" layoutX="85.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cherrybomb" fitHeight="109.0" fitWidth="138.0" layoutX="82.0" layoutY="540.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/cherrySelector.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1175.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/menuIcon.png" />
          </image>
       </ImageView>
    </children>

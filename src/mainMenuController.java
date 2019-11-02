@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class playerSelectionController {
+public class mainMenuController {
 
     public void hoverOverNewButton(MouseEvent mouseEvent) {
         ImageView button = (ImageView) mouseEvent.getSource();
