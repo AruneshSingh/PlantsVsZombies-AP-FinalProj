@@ -170,5 +170,12 @@
             <Image url="@../images/save.png" />
          </image>
       </ImageView>
+      <Pane layoutX="430.0" layoutY="43.0" prefHeight="23.0" prefWidth="396.0" style="-fx-background-color: #cc8d61;" />
+      <Pane layoutX="430.0" layoutY="43.0" prefHeight="23.0" prefWidth="200.0" style="-fx-background-color: #ffe1b5;" />
+      <ImageView fitHeight="60.0" fitWidth="410.0" layoutX="423.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/timerBar.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
