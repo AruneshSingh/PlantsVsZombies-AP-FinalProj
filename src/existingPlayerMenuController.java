@@ -1,37 +1,49 @@
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class levelSelectionController {
+public class existingPlayerMenuController {
     private boolean selectedButton = false;
-    private ImageView selectedPane;
-    public void levelHoverIn(MouseEvent mouseEvent){
+    private Pane selectedPane;
+    public void playerHoverIn(MouseEvent mouseEvent){
         if(!selectedButton) {
-            ImageView button = (ImageView) mouseEvent.getSource();
-            button.setImage(new Image("images/lv" + button.getId() + "Colour.png"));
+            Pane button = (Pane) mouseEvent.getSource();
+            ColorAdjust colorAdjust = new ColorAdjust();
+            Color color = new Color(1,1,1,0.5);
+            colorAdjust.setBrightness(0.5);
+            button.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
         }
     }
-    public void levelHoverOut(MouseEvent mouseEvent){
+    public void playerHoverOut(MouseEvent mouseEvent){
         if(!selectedButton) {
-            ImageView button = (ImageView) mouseEvent.getSource();
-            button.setImage(new Image("images/lv" + button.getId() + "BW.png"));
+            Pane button = (Pane) mouseEvent.getSource();
+            button.setBackground(null);
         }
     }
-    public void levelSelection(MouseEvent mouseEvent) throws IOException {
+    public void playerSelection(MouseEvent mouseEvent) throws IOException {
         selectedButton = true;
-        ImageView button = (ImageView) mouseEvent.getSource();
+        Pane button = (Pane) mouseEvent.getSource();
         if(selectedPane!=null) {
-            selectedPane.setImage(new Image("images/lv"+selectedPane.getId()+"BW.png"));
+            selectedPane.setEffect(null);
         }
         selectedPane = button;
-        button.setImage(new Image("images/lv"+button.getId()+"Colour.png"));
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setBrightness(0.5);
+        button.setEffect(colorAdjust);
     }
     public void startHoverIn(MouseEvent mouseEvent){
         ImageView button = (ImageView) mouseEvent.getSource();

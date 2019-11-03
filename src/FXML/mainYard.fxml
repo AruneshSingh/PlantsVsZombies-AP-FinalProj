@@ -93,23 +93,23 @@
             <ImageView fitHeight="80.0" fitWidth="97.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4" />
             <ImageView fitHeight="80.0" fitWidth="100.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
             <ImageView fitHeight="80.0" fitWidth="100.0" onMouseClicked="#imagePaneDrop" onMouseEntered="#dragEnteredPane" onMouseExited="#dragExitPane" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4" />
-            <ImageView fitHeight="80" fitWidth="80" onMouseReleased="#moveLawnmover" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80" fitWidth="80" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/lawnmower.gif" />
                </image></ImageView>
-            <ImageView fitHeight="80" fitWidth="80" onMouseReleased="#moveLawnmover" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+            <ImageView fitHeight="80" fitWidth="80" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                <image>
                   <Image url="@../images/lawnmower.gif" />
                </image></ImageView>
-            <ImageView fitHeight="80" fitWidth="80" onMouseReleased="#moveLawnmover" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+            <ImageView fitHeight="80" fitWidth="80" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                <image>
                   <Image url="@../images/lawnmower.gif" />
                </image></ImageView>
-            <ImageView fitHeight="80" fitWidth="80" onMouseReleased="#moveLawnmover" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+            <ImageView fitHeight="80" fitWidth="80" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                <image>
                   <Image url="@../images/lawnmower.gif" />
                </image></ImageView>
-            <ImageView fitHeight="80" fitWidth="80" onMouseReleased="#moveLawnmover" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+            <ImageView fitHeight="80" fitWidth="80" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                <image>
                   <Image url="@../images/lawnmower.gif" />
                </image></ImageView>
@@ -140,7 +140,7 @@
             <Image url="@../images/cherrySelector.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1175.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1175.0" layoutY="24.0" onMouseEntered="#hoverExitIn" onMouseExited="#hoverExitOut" onMousePressed="#clickExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/exit.png" />
          </image>
@@ -150,7 +150,7 @@
             <Image url="@../images/shovel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="1045.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="1045.0" layoutY="24.0" onMouseEntered="#hoverSpeakerIn" onMouseExited="#hoverSpeakerOut" onMousePressed="#playPause" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/pause.png" />
          </image>
@@ -160,7 +160,7 @@
             <Image url="@../images/restartLevel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="909.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="909.0" layoutY="26.0" onMouseEntered="#hoverSpeakerIn" onMouseExited="#hoverSpeakerOut" onMousePressed="#pressSpeaker" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/soundOff.png" />
          </image>
@@ -175,31 +175,6 @@
       <ImageView fitHeight="60.0" fitWidth="410.0" layoutX="423.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/timerBar.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="119.0" fitWidth="76.0" layoutX="1611.0" layoutY="171.0" onMouseReleased="#moveZombies" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/normalZombie.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="114.0" fitWidth="98.0" layoutX="1325.0" layoutY="326.0" onMouseReleased="#moveZombies" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/footballZombie.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="119.0" fitWidth="76.0" layoutX="1290.0" layoutY="201.0" onMouseReleased="#moveZombies" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/normalZombie.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="114.0" fitWidth="98.0" layoutX="1404.0" layoutY="103.0" onMouseReleased="#moveZombies" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/footballZombie.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="119.0" fitWidth="76.0" layoutX="1480.0" layoutY="433.0" onMouseReleased="#moveZombies" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/normalZombie.gif" />
          </image>
       </ImageView>
    </children>

@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="newPlayerMenuController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="existingPlayerMenuController">
    <children>
       <ImageView fitHeight="735.0" fitWidth="1335.0" layoutX="-8.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" styleClass="btn">
          <image>
             <Image url="@../images/existingPlayerMenu.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="116.0" fitWidth="246.0" layoutX="522.0" layoutY="596.0" onMouseClicked="#startButtonClick" onMouseEntered="#hoverOverStartButton" onMouseExited="#hoverOutStartButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="116.0" fitWidth="246.0" layoutX="522.0" layoutY="596.0" onMouseEntered="#startHoverIn" onMouseExited="#startHoverOut" onMousePressed="#startClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/startPlank.png" />
          </image>
@@ -28,21 +28,21 @@
             <Image url="@../images/playerBoard.png" />
          </image>
       </ImageView>
-      <Pane layoutX="317.0" layoutY="329.0" prefHeight="39.0" prefWidth="656.0">
+      <Pane layoutX="317.0" layoutY="329.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
-            <Label layoutX="142.0" prefHeight="26.0" prefWidth="203.0" text="Arunesh Singh" textFill="WHITE">
+            <Label layoutX="142.0" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="26.0" prefWidth="203.0" text="Arunesh Singh" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="519.0" layoutY="7.0" prefHeight="26.0" prefWidth="24.0" text="5" textFill="WHITE">
+            <Label layoutX="519.0" layoutY="7.0" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="26.0" prefWidth="24.0" text="5" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="20.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="317.0" layoutY="363.0" prefHeight="39.0" prefWidth="656.0">
+      <Pane layoutX="317.0" layoutY="363.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
             <Label layoutX="142.0" prefHeight="26.0" prefWidth="203.0" text="Udhvarg Chaturvedi" textFill="WHITE">
                <font>
@@ -56,7 +56,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="317.0" layoutY="396.0" prefHeight="39.0" prefWidth="656.0">
+      <Pane layoutX="317.0" layoutY="396.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
             <Label layoutX="142.0" prefHeight="26.0" prefWidth="203.0" text="Smera Goel" textFill="WHITE">
                <font>
@@ -70,7 +70,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="317.0" layoutY="430.0" prefHeight="39.0" prefWidth="656.0">
+      <Pane layoutX="317.0" layoutY="430.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
             <Label layoutX="142.0" prefHeight="26.0" prefWidth="203.0" text="Rishabh Devgon" textFill="WHITE">
                <font>

@@ -36,7 +36,7 @@
             <Image url="@../images/lv5BW.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="530.0" layoutY="590.0" onMousePressed="#startClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="530.0" layoutY="590.0" onMouseEntered="#startHoverIn" onMouseExited="#startHoverOut" onMousePressed="#startClicked" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/startPlank.png" />
          </image>
