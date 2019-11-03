@@ -1,3 +1,4 @@
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -166,10 +167,10 @@ public class mainYardController implements Initializable {
 
     public void movePea(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(500));
+        translateTransition.setDuration(Duration.millis(1000));
         translateTransition.setNode(temp);
         translateTransition.setToX(temp.getLayoutX() + 1300);
-        translateTransition.setCycleCount(1);
+        translateTransition.setCycleCount(Timeline.INDEFINITE);
         translateTransition.setAutoReverse(false);
         translateTransition.play();
     }

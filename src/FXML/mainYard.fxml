@@ -171,7 +171,7 @@
             <Image url="@../images/save.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="17.0" layoutX="430.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="395.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e1bbbb" height="17.0" layoutX="430.0" layoutY="46.0" stroke="BLACK" strokeType="INSIDE" width="395.0" />
       <ImageView fitHeight="60.0" fitWidth="410.0" layoutX="423.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/timerBar.png" />
