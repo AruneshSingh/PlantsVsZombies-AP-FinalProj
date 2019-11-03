@@ -140,7 +140,7 @@
             <Image url="@../images/cherrySelector.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1175.0" layoutY="24.0" onMouseEntered="#hoverExitIn" onMouseExited="#hoverExitOut" onMousePressed="#clickExit" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="1175.0" layoutY="24.0" onMouseEntered="#hoverIconIn" onMouseExited="#hoverIconOut" onMousePressed="#clickExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/exit.png" />
          </image>
@@ -150,7 +150,7 @@
             <Image url="@../images/shovel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="1045.0" layoutY="24.0" onMouseEntered="#hoverSpeakerIn" onMouseExited="#hoverSpeakerOut" onMousePressed="#playPause" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="1045.0" layoutY="24.0" onMouseEntered="#hoverPlayIn" onMouseExited="#hoverPlayOut" onMousePressed="#playPause" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/pause.png" />
          </image>
@@ -160,7 +160,7 @@
             <Image url="@../images/restartLevel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="909.0" layoutY="26.0" onMouseEntered="#hoverSpeakerIn" onMouseExited="#hoverSpeakerOut" onMousePressed="#pressSpeaker" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="909.0" layoutY="26.0" onMouseEntered="#hoverIconIn" onMouseExited="#hoverIconOut" onMousePressed="#pressSpeaker" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/soundOff.png" />
          </image>

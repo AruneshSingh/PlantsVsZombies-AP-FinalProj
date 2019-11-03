@@ -126,12 +126,12 @@ public class mainYardController {
         translateTransition.setAutoReverse(false);
         translateTransition.play();
     }
-    public void hoverExitIn(MouseEvent mouseEvent){
+    public void hoverIconIn(MouseEvent mouseEvent){
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(0.5);
         ((ImageView)mouseEvent.getSource()).setEffect(colorAdjust);
     }
-    public void hoverExitOut(MouseEvent mouseEvent){
+    public void hoverIconOut(MouseEvent mouseEvent){
         ((ImageView)mouseEvent.getSource()).setEffect(null);
     }
     public void clickExit(MouseEvent mouseEvent) throws IOException {
@@ -140,15 +140,24 @@ public class mainYardController {
         stage.setScene(new Scene(root));
         stage.show();
     }
-    public void hoverSpeakerIn(MouseEvent mouseEvent) {
-        ImageView speaker = (ImageView) mouseEvent.getSource();
-        ColorAdjust colorAdjust = new ColorAdjust();
-        colorAdjust.setBrightness(0.5);
-        speaker.setEffect(colorAdjust);
+    public void hoverPlayIn(MouseEvent mouseEvent) {
+        ImageView Play = (ImageView) mouseEvent.getSource();
+        ColorAdjust colorAdjust;
+        if(Play.getEffect()==null) {
+            colorAdjust = new ColorAdjust();
+            colorAdjust.setBrightness(0.5);
+        }
+        else{
+            colorAdjust = (ColorAdjust) Play.getEffect();
+            colorAdjust.setHue(50);
+        }
+        Play.setEffect(colorAdjust);
     }
-    public void hoverSpeakerOut(MouseEvent mouseEvent) {
-        ImageView speaker = (ImageView) mouseEvent.getSource();
-        speaker.setEffect(null);
+    public void hoverPlayOut(MouseEvent mouseEvent) {
+        if(!play) {
+            ImageView speaker = (ImageView) mouseEvent.getSource();
+            speaker.setEffect(null);
+        }
     }
     public void pressSpeaker(MouseEvent mouseEvent) {
         ImageView speaker = (ImageView) mouseEvent.getSource();
@@ -169,10 +178,18 @@ public class mainYardController {
             button.setImage(new Image("images/pause.png"));
         }
         else {
+            ColorAdjust colorAdjust = new ColorAdjust();
+            colorAdjust.setHue(50);
+            button.setEffect(colorAdjust);
             button.setImage(new Image("images/play.png"));
         }
         play = !play;
     }
-
+    public void exitButtonClick(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("FXML/mainMenu.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 
 }
