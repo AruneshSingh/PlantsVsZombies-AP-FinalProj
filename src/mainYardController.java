@@ -18,9 +18,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 
 
 public class mainYardController implements Initializable {
@@ -34,9 +32,13 @@ public class mainYardController implements Initializable {
 
     private boolean shovelActive,speakerStatus,play,peaShooterSelected,iceShooterSelected;
     private Set<String> placedPlants;
+    private Map<String,ImageView> peas;
+    private Map<ImageView, TranslateTransition> transitionMap;
     public mainYardController(){
         placedPlants = new HashSet<String>();
         speakerStatus = false;
+        peas = new HashMap<String,ImageView>();
+        transitionMap = new HashMap<ImageView, TranslateTransition>();
     }
     public void dragEnteredPane(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
@@ -57,28 +59,33 @@ public class mainYardController implements Initializable {
 //        System.out.println(paneElement.toString());
     }
     public void mouseClicked(MouseEvent mouseEvent) {
-        ImageView paneElement = (ImageView) mouseEvent.getSource();
-        if(!placedPlants.contains(paneElement.toString())&& shovelActive != true) {
-            switch (paneElement.getId()) {
-                case "sunflower":
-                    clickedAndDragged = (new Image("images/plants/sunflower.gif"));
-                    break;
-                case "peashooter":
-                    clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
-                    peaShooterSelected = true;
-                    break;
-                case "snowPeaShooter":
-                    clickedAndDragged = (new Image("images/plants/snowPeaPlant.gif"));
-                    iceShooterSelected = true;
-                    break;
-                case "walnut":
-                    clickedAndDragged = (new Image("images/plants/walnutFullLife.gif"));
-                    break;
-                case "cherrybomb":
-                    clickedAndDragged = (new Image("images/plants/cherryBombPlant.gif"));
-                    break;
+        try {
+            ImageView paneElement = (ImageView) mouseEvent.getSource();
+            if (!placedPlants.contains(paneElement.toString()) && shovelActive != true) {
+                switch (paneElement.getId()) {
+                    case "sunflower":
+                        clickedAndDragged = (new Image("images/plants/sunflower.gif"));
+                        break;
+                    case "peashooter":
+                        clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
+                        peaShooterSelected = true;
+                        break;
+                    case "snowPeaShooter":
+                        clickedAndDragged = (new Image("images/plants/snowPeaPlant.gif"));
+                        iceShooterSelected = true;
+                        break;
+                    case "walnut":
+                        clickedAndDragged = (new Image("images/plants/walnutFullLife.gif"));
+                        break;
+                    case "cherrybomb":
+                        clickedAndDragged = (new Image("images/plants/cherryBombPlant.gif"));
+                        break;
 
+                }
             }
+        }
+        catch (ClassCastException e){
+
         }
 //        System.out.println("Clicked");
     }
@@ -89,13 +96,14 @@ public class mainYardController implements Initializable {
             paneElement.setImage(clickedAndDragged);
             clickedAndDragged = null;
             placedPlants.add(paneElement.toString());
+            peas.put(paneElement.toString(),shotView);
             if(peaShooterSelected == true)
             {
                 shotView.setImage(new Image("images/plants/pea.png"));
                 peaX = GridPane.getRowIndex(paneElement);
                 peaY = GridPane.getColumnIndex(paneElement);
-                System.out.println(peaX);
-                System.out.println(peaY);
+//                System.out.println(peaX);
+//                System.out.println(peaY);
 
                 ((GridPane) paneElement.getParent()).add(shotView,peaY+1,peaX);
                 movePea(shotView);
@@ -115,15 +123,13 @@ public class mainYardController implements Initializable {
         }
         else if(shovelActive==true && placedPlants.contains(paneElement.toString())) {
             paneElement.setImage(null);
-            System.out.println(((GridPane) paneElement.getParent()).getChildren().removeAll());
-            placedPlants.remove(paneElement.getId());
-            System.out.println(placedPlants.contains(paneElement.getId()));
-            shovelPane.setEffect(null);
 
+            stopPea(peas.get(paneElement.toString()));
+
+            placedPlants.remove(paneElement.getId());
+            shovelPane.setEffect(null);
             shovelActive = false;
-//            System.out.println("Shoveled");
         }
-//        System.out.println("Ran "+ placedPlants.contains(paneElement.getId()));
     }
 
     public void shovelAction(MouseEvent mouseEvent) {
@@ -179,12 +185,17 @@ public class mainYardController implements Initializable {
 
     public void movePea(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
+        transitionMap.put(temp,translateTransition);
         translateTransition.setDuration(Duration.millis(1000));
         translateTransition.setNode(temp);
         translateTransition.setToX(temp.getLayoutX() + 1300);
         translateTransition.setCycleCount(Timeline.INDEFINITE);
         translateTransition.setAutoReverse(false);
         translateTransition.play();
+    }
+    public void stopPea(ImageView temp) {
+        TranslateTransition translateTransition = transitionMap.get(temp);
+        translateTransition.stop();
     }
 
 
