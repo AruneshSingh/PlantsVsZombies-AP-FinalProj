@@ -21,17 +21,27 @@ public class existingPlayerMenuController {
     private Pane selectedPane;
     public void playerHoverIn(MouseEvent mouseEvent){
         if(!selectedButton) {
-            Pane button = (Pane) mouseEvent.getSource();
-            ColorAdjust colorAdjust = new ColorAdjust();
-            Color color = new Color(1,1,1,0.5);
-            colorAdjust.setBrightness(0.5);
-            button.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
+            try {
+                Pane button = (Pane) mouseEvent.getSource();
+                ColorAdjust colorAdjust = new ColorAdjust();
+                Color color = new Color(1, 1, 1, 0.5);
+                colorAdjust.setBrightness(0.5);
+                button.setBackground(new Background(new BackgroundFill(color, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+            catch (ClassCastException e){
+
+            }
         }
     }
     public void playerHoverOut(MouseEvent mouseEvent){
         if(!selectedButton) {
-            Pane button = (Pane) mouseEvent.getSource();
-            button.setBackground(null);
+            try {
+                Pane button = (Pane) mouseEvent.getSource();
+                button.setBackground(null);
+            }
+            catch (ClassCastException e){
+
+            }
         }
     }
     public void playerSelection(MouseEvent mouseEvent) throws IOException {

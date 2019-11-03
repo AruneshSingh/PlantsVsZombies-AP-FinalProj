@@ -25,15 +25,16 @@ public class mainYardController implements Initializable {
 
     private Image clickedAndDragged;
     private  ImageView shovelPane, lawnmover;
+    private double peaX,iceX;
 
     @FXML
     public ImageView zombie, zombie2, zombie3, token;
 
-    private boolean shovelActive,speakerStatus,play;
+    private boolean shovelActive,speakerStatus,play,peaShooterSelected,iceShooterSelected;
     private Set<String> placedPlants;
     public mainYardController(){
         placedPlants = new HashSet<String>();
-        speakerStatus = true;
+        speakerStatus = false;
     }
     public void dragEnteredPane(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
@@ -62,9 +63,11 @@ public class mainYardController implements Initializable {
                     break;
                 case "peashooter":
                     clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
+                    peaShooterSelected = true;
                     break;
                 case "snowPeaShooter":
                     clickedAndDragged = (new Image("images/plants/snowPeaPlant.gif"));
+                    iceShooterSelected = true;
                     break;
                 case "walnut":
                     clickedAndDragged = (new Image("images/plants/walnutFullLife.gif"));
@@ -83,6 +86,16 @@ public class mainYardController implements Initializable {
             paneElement.setImage(clickedAndDragged);
             clickedAndDragged = null;
             placedPlants.add(paneElement.toString());
+            if(peaShooterSelected == true)
+            {
+                peaX = paneElement.getLayoutX();
+                peaShooterSelected = false;
+            }
+            if(iceShooterSelected == true) {
+                iceX = paneElement.getLayoutX();
+                iceShooterSelected = false;
+            }
+
 //            System.out.println("Dropped");
         }
         else if(shovelActive==true && placedPlants.contains(paneElement.toString())) {
