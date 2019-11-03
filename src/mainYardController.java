@@ -194,8 +194,12 @@ public class mainYardController implements Initializable {
         translateTransition.play();
     }
     public void stopPea(ImageView temp) {
-        TranslateTransition translateTransition = transitionMap.get(temp);
-        translateTransition.stop();
+        try {
+            TranslateTransition translateTransition = transitionMap.get(temp);
+            translateTransition.stop();
+        }
+        catch (NullPointerException e) {
+        }
     }
 
 
