@@ -137,9 +137,9 @@ public class mainYardController implements Initializable {
     public void moveSun(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
 
-        translateTransition.setDuration(Duration.millis(20000));
+        translateTransition.setDuration(Duration.millis(10000));
         translateTransition.setNode(temp);
-        translateTransition.setToY(temp.getLayoutX() + 560);
+        translateTransition.setToY( 560);
         translateTransition.setCycleCount(1);
         translateTransition.setAutoReverse(false);
         translateTransition.play();

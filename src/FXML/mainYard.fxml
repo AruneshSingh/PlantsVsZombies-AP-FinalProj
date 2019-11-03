@@ -192,7 +192,7 @@
             <Image url="@../images/zomies/normalZombie.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="sun" fitHeight="45.0" fitWidth="57.0" layoutX="342.0" layoutY="-54.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="token" fitHeight="45.0" fitWidth="57.0" layoutX="343.0" layoutY="-19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/plants/sun.gif" />
          </image>
