@@ -4,6 +4,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,7 +13,7 @@ import java.util.Set;
 
 public class mainYardController {
     private Image clickedAndDragged;
-    private  ImageView shovelPane;
+    private  ImageView shovelPane, lawnmover, zombie;
     private boolean shovelActive;
     private Set<String> placedPlants;
     public mainYardController(){
@@ -91,5 +93,29 @@ public class mainYardController {
         }
 
 //        System.out.println(shovelActive);
+    }
+
+    public void moveLawnmover(MouseEvent mouseEvent) {
+        lawnmover = (ImageView) mouseEvent.getSource();
+        TranslateTransition translateTransition = new TranslateTransition();
+
+        translateTransition.setDuration(Duration.millis(1000));
+        translateTransition.setNode(lawnmover);
+        translateTransition.setByX(1500);
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.play();
+    }
+
+    public void moveZombies(MouseEvent mouseEvent) {
+        zombie = (ImageView) mouseEvent.getSource();
+        TranslateTransition translateTransition = new TranslateTransition();
+
+        translateTransition.setDuration(Duration.millis(20000));
+        translateTransition.setNode(zombie);
+        translateTransition.setToX(-(zombie.getLayoutX() - 230));
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.play();
     }
 }
