@@ -101,12 +101,12 @@ public class mainYardController implements Initializable {
                 peaShooterSelected = false;
             }
             if(iceShooterSelected == true) {
-//                iceX = paneElement.getLayoutX();
-//                iceY = paneElement.getLayoutY();
-                shotView.setImage(new Image("images/plants/snowPea.webp"));
-                shotView.setLayoutX(peaX);
-                shotView.setLayoutY(peaY);
-                ((GridPane) paneElement.getParent()).getChildren().add(shotView);
+                iceX = GridPane.getRowIndex(paneElement);
+                iceY = GridPane.getColumnIndex(paneElement);
+                shotView.setImage(new Image("images/plants/snowPea.png"));
+
+                ((GridPane) paneElement.getParent()).add(shotView,iceY+1,iceX);
+                movePea(shotView);
                 iceShooterSelected = false;
             }
 
