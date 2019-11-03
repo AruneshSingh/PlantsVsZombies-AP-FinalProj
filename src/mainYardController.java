@@ -152,7 +152,7 @@ public class mainYardController implements Initializable {
 
         translateTransition.setDuration(Duration.millis(10000));
         translateTransition.setNode(temp);
-        translateTransition.setToY( 560);
+        translateTransition.setToY(660);
         translateTransition.setCycleCount(1);
         translateTransition.setAutoReverse(false);
         translateTransition.play();
