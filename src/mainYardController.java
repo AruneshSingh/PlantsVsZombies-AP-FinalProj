@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
@@ -25,7 +26,7 @@ public class mainYardController implements Initializable {
 
     private Image clickedAndDragged;
     private  ImageView shovelPane, lawnmover;
-    private double peaX,iceX;
+    private int peaX,peaY,iceX,iceY;
 
     @FXML
     public ImageView zombie, zombie2, zombie3, token;
@@ -49,10 +50,10 @@ public class mainYardController implements Initializable {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
         if(clickedAndDragged != null && !placedPlants.contains(paneElement.toString())){
             paneElement.setImage(null);
-            System.out.println("ifExitPassed");
+//            System.out.println("ifExitPassed");
         }
 //        System.out.println("RanExit");
-        System.out.println(paneElement.toString());
+//        System.out.println(paneElement.toString());
     }
     public void mouseClicked(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
@@ -82,17 +83,30 @@ public class mainYardController implements Initializable {
     }
     public void imagePaneDrop(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
+        ImageView shotView = new ImageView();
         if(clickedAndDragged !=null && !placedPlants.contains(paneElement.toString())) {
             paneElement.setImage(clickedAndDragged);
             clickedAndDragged = null;
             placedPlants.add(paneElement.toString());
             if(peaShooterSelected == true)
             {
-                peaX = paneElement.getLayoutX();
+                shotView.setImage(new Image("images/plants/pea.png"));
+                peaX = GridPane.getRowIndex(paneElement);
+                peaY = GridPane.getColumnIndex(paneElement);
+                System.out.println(peaX);
+                System.out.println(peaY);
+
+                ((GridPane) paneElement.getParent()).add(shotView,peaY+1,peaX);
+                movePea(shotView);
                 peaShooterSelected = false;
             }
             if(iceShooterSelected == true) {
-                iceX = paneElement.getLayoutX();
+//                iceX = paneElement.getLayoutX();
+//                iceY = paneElement.getLayoutY();
+                shotView.setImage(new Image("images/plants/snowPea.webp"));
+                shotView.setLayoutX(peaX);
+                shotView.setLayoutY(peaY);
+                ((GridPane) paneElement.getParent()).getChildren().add(shotView);
                 iceShooterSelected = false;
             }
 
@@ -100,8 +114,11 @@ public class mainYardController implements Initializable {
         }
         else if(shovelActive==true && placedPlants.contains(paneElement.toString())) {
             paneElement.setImage(null);
+            System.out.println(((GridPane) paneElement.getParent()).getChildren().removeAll());
             placedPlants.remove(paneElement.getId());
+            System.out.println(placedPlants.contains(paneElement.getId()));
             shovelPane.setEffect(null);
+
             shovelActive = false;
 //            System.out.println("Shoveled");
         }
@@ -146,6 +163,17 @@ public class mainYardController implements Initializable {
         translateTransition.setAutoReverse(false);
         translateTransition.play();
     }
+
+    public void movePea(ImageView temp) {
+        TranslateTransition translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.millis(500));
+        translateTransition.setNode(temp);
+        translateTransition.setToX(temp.getLayoutX() + 1300);
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.play();
+    }
+
 
     public void moveSun(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
