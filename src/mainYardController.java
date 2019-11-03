@@ -30,7 +30,7 @@ public class mainYardController implements Initializable {
     private int peaX,peaY,iceX,iceY;
 
     @FXML
-    public ImageView zombie, zombie2, zombie3, token;
+    public ImageView zombie, zombie2, zombie3, token, head;
 
     private boolean shovelActive,speakerStatus,play,peaShooterSelected,iceShooterSelected;
     private Set<String> placedPlants;
@@ -165,6 +165,18 @@ public class mainYardController implements Initializable {
         translateTransition.play();
     }
 
+    //786, 411
+    public void moveHead(ImageView temp) {
+        TranslateTransition translateTransition = new TranslateTransition();
+
+        translateTransition.setDuration(Duration.millis(50000));
+        translateTransition.setNode(temp);
+        translateTransition.setToX(-(temp.getLayoutX() - 411));
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.play();
+    }
+
     public void movePea(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
         translateTransition.setDuration(Duration.millis(1000));
@@ -260,5 +272,6 @@ public class mainYardController implements Initializable {
         moveZombies(zombie2);
         moveZombies(zombie3);
         moveSun(token);
+        moveHead(head);
     }
 }

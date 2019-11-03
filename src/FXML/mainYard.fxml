@@ -197,5 +197,10 @@
             <Image url="@../images/plants/sun.gif" />
          </image>
       </ImageView>
+      <ImageView fx:id="head" fitHeight="130.0" fitWidth="98.0" layoutX="779.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/timelineHead.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
