@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -22,10 +23,15 @@
             <Image url="@../images/startPlank.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="26.0" fitWidth="147.0" layoutX="1148.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="55.0" fitWidth="48.0" layoutX="92.0" layoutY="65.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#exitButtonClick" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/exit.png" />
          </image>
       </ImageView>
+      <Label layoutX="92.0" layoutY="126.0" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

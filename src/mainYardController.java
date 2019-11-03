@@ -1,4 +1,6 @@
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,14 +15,20 @@ import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashSet;
+import java.util.ResourceBundle;
 import java.util.Set;
 
 
-public class mainYardController {
+public class mainYardController implements Initializable {
 
     private Image clickedAndDragged;
-    private  ImageView shovelPane, lawnmover, zombie;
+    private  ImageView shovelPane, lawnmover;
+
+    @FXML
+    public ImageView zombie, zombie2, zombie3, token;
+
     private boolean shovelActive,speakerStatus,play;
     private Set<String> placedPlants;
     public mainYardController(){
@@ -115,17 +123,28 @@ public class mainYardController {
         translateTransition.play();
     }
 
-    public void moveZombies(MouseEvent mouseEvent) {
-        zombie = (ImageView) mouseEvent.getSource();
+    public void moveZombies(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
 
         translateTransition.setDuration(Duration.millis(20000));
-        translateTransition.setNode(zombie);
-        translateTransition.setToX(-(zombie.getLayoutX() - 230));
+        translateTransition.setNode(temp);
+        translateTransition.setToX(-(temp.getLayoutX() - 230));
         translateTransition.setCycleCount(1);
         translateTransition.setAutoReverse(false);
         translateTransition.play();
     }
+
+    public void moveSun(ImageView temp) {
+        TranslateTransition translateTransition = new TranslateTransition();
+
+        translateTransition.setDuration(Duration.millis(20000));
+        translateTransition.setNode(temp);
+        translateTransition.setToY(temp.getLayoutX() + 560);
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.play();
+    }
+
     public void hoverIconIn(MouseEvent mouseEvent){
         ColorAdjust colorAdjust = new ColorAdjust();
         colorAdjust.setBrightness(0.5);
@@ -192,4 +211,12 @@ public class mainYardController {
         stage.show();
     }
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        moveZombies(zombie);
+        moveZombies(zombie2);
+        moveZombies(zombie3);
+        moveSun(token);
+    }
 }
