@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="levelSelectionController">
       <children>
@@ -41,5 +43,15 @@
             <Image url="@../images/startPlank.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="55.0" fitWidth="48.0" layoutX="92.0" layoutY="65.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#exitButtonClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/exit.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="92.0" layoutY="126.0" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="25.0" />
+         </font>
+      </Label>
       </children>
 </Pane>
