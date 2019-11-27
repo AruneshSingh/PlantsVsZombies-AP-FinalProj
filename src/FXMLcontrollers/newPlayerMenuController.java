@@ -22,13 +22,13 @@ public class newPlayerMenuController {
     }
     public void startButtonClick(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/modeSelection.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/modeSelection.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }
     public void exitButtonClick(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/mainMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/mainMenu.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }

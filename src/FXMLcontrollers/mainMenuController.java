@@ -31,14 +31,14 @@ public class mainMenuController {
     }
     public void newButtonClick(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/newPlayerMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/newPlayerMenu.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
     public void existingButtonClick(MouseEvent mouseEvent) throws  IOException {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/existingPlayerMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/existingPlayerMenu.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

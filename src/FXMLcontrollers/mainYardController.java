@@ -7,11 +7,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -31,6 +30,9 @@ public class mainYardController implements Initializable {
 
     @FXML
     public ImageView zombie, zombie2, zombie3, token, head;
+
+    @FXML
+    public Label tokenCounterLabel;
 
     private boolean shovelActive,speakerStatus,play,peaShooterSelected,iceShooterSelected;
     private Set<String> placedPlants;
@@ -135,6 +137,10 @@ public class mainYardController implements Initializable {
         }
     }
 
+    public void tokenCount(MouseEvent mouseEvent) {
+        tokenCounterLabel.setText("25");
+    }
+
     public void shovelAction(MouseEvent mouseEvent) {
         shovelPane = (ImageView) mouseEvent.getSource();
         if(shovelActive){
@@ -225,9 +231,10 @@ public class mainYardController implements Initializable {
     public void hoverIconOut(MouseEvent mouseEvent){
         ((ImageView)mouseEvent.getSource()).setEffect(null);
     }
+
     public void clickExit(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/levelSelection.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/levelSelection.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }
@@ -278,7 +285,7 @@ public class mainYardController implements Initializable {
     }
     public void exitButtonClick(MouseEvent mouseEvent) throws IOException {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("FXML/mainMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/mainMenu.fxml"));
         stage.setScene(new Scene(root));
         stage.show();
     }

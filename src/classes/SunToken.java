@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class SunToken implements Serializable {
     private int disappearTime;
     private boolean collected;
+    private int value;
 
     SunToken(){
         this.disappearTime = 10;
         this.collected = false;
+        this.value = 25;
     }
 
     //TODO: Run this function every second.
