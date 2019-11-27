@@ -1,38 +1,43 @@
 package classes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Level {
+public class Level implements Serializable {
     private int level;
     private int tokenCounter;
     private boolean finished;
     private String mode;
     private ArrayList<ArrayList<Characters>> grid;
 
-    Level(int lv, String mode){
+    public Level(int lv, String mode){
         this.level = lv;
         this.tokenCounter = 0;
         this.finished = false;
         this.mode = mode;
         this.grid = new ArrayList<ArrayList<Characters>>(5);
 
-        ArrayList<Characters> temp = new ArrayList<Characters>(10);
-        temp.add(new Lawnmover());
         for (int i = 0; i < 5 ; i++) {
+            ArrayList<Characters> temp = new ArrayList<Characters>(10);
+            temp.add(new Lawnmover());
+            for (int j = 0; j < 9; j++) {
+                temp.add(null);
+            }
             this.grid.add(temp);
         }
     }
 
-    private ArrayList<Plants> temp = new ArrayList<Plants>(9);
+    public ArrayList<ArrayList<Characters>> getGrid() {
+        return grid;
+    }
+
+    public void addToGrid(ArrayList<ArrayList<Characters>> grid, Characters c, int row, int column) {
+        grid.get(row).set(column, c);
+    }
 
     //TODO: Generate suntokens continuously
     public void generateSunToken(){
 
     }
-
-
-
-
-
 
 }

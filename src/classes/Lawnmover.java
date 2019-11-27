@@ -1,15 +1,14 @@
 package classes;
 
-
-//TODO: Make the attack function (parameter: z, zombie) - reduce zombie's health to 0.
+//TODO: Check how to kill all zombies in the row
 
 class Lawnmover extends Characters {
-    private void attack() {
-
+    private void attack(Zombies z) {
+        z.setHealth(0);
     }
 
     @Override
-    void action() {
-        attack();
+    void action(Plants p, Zombies z) {
+        attack(z);
     }
 }

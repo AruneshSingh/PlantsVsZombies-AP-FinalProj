@@ -1,10 +1,10 @@
 package classes;
 
-abstract class Characters {
+abstract public class Characters {
 
     protected int Health;
 
-    abstract void action();
+    abstract void action(Plants p, Zombies z);
 
     public int getHealth() {
         return Health;

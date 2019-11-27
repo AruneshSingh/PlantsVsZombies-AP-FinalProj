@@ -2,10 +2,15 @@ package classes;
 
 import java.io.Serializable;
 
-abstract class Zombies extends Characters implements Serializable {
+abstract public class Zombies extends Characters implements Serializable {
     private int damage;
     private int speed;
     private boolean rabid;
+
+    @Override
+    public void action(Plants p, Zombies z) {
+        p.setHealth(p.getHealth()-getDamage());
+    }
 
     public void takeDamage(int damage){
         setHealth(getHealth()-damage);
@@ -40,17 +45,12 @@ abstract class Zombies extends Characters implements Serializable {
     }
 }
 
-//TODO: Implement action of all zombies
 class Skinny extends Zombies {
 
     Skinny(){
         setHealth(100);
         setDamage(10);
         setSpeed(5);
-    }
-
-    @Override
-    public void action() {
     }
 }
 
@@ -61,11 +61,6 @@ class Conehead extends Zombies {
         setDamage(15);
         setSpeed(5);
     }
-
-    @Override
-    public void action() {
-
-    }
 }
 
 class Football extends Zombies {
@@ -75,11 +70,6 @@ class Football extends Zombies {
         setDamage(15);
         setSpeed(7);
     }
-
-    @Override
-    public void action() {
-
-    }
 }
 
 class Skinny2 extends Zombies {
@@ -88,10 +78,5 @@ class Skinny2 extends Zombies {
         setHealth(100);
         setDamage(10);
         setSpeed(5);
-    }
-
-    @Override
-    void action() {
-
     }
 }

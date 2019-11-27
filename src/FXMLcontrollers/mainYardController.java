@@ -1,5 +1,6 @@
 package FXMLcontrollers;
 
+import classes.*;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -24,9 +27,18 @@ import java.util.*;
 
 public class mainYardController implements Initializable {
 
+    private int level;
+    private String mode;
     private Image clickedAndDragged;
     private  ImageView shovelPane, lawnmover;
     private int peaX,peaY,iceX,iceY;
+
+
+    private Level current;
+    private ArrayList<ArrayList<Characters>> grid;
+    private String type;
+    private ArrayList<Plants> plantListTemp;  //plant list and zombie list will have plants and zombies from the row to pass onto lawnmover and cherrybombs
+    private ArrayList<Zombies> zombieListTemp;
 
     @FXML
     public ImageView zombie, zombie2, zombie3, token, head;
@@ -40,11 +52,37 @@ public class mainYardController implements Initializable {
     private Map<ImageView, TranslateTransition> transitionMap;
 
     public mainYardController(){
+
+        readFile();
+        current = new Level(level, mode);
+        grid = current.getGrid();
         placedPlants = new HashSet<String>();
         speakerStatus = false;
         peas = new HashMap<String,ImageView>();
         transitionMap = new HashMap<ImageView, TranslateTransition>();
     }
+
+    public void readFile() {
+        BufferedReader in;
+        try {
+            in = new BufferedReader(new FileReader("E:\\BTech CSD\\Sem 3\\PlantsVsZombies-AP-FinalProj\\src\\FXMLcontrollers\\currentUser.txt"));
+            String temp = in.readLine();
+            this.level = Integer.parseInt(temp);
+            temp = in.readLine();
+            this.mode = temp;
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+    //Functions Needed by SCENE BUILDER
+    // --------------------------------------------------------
+
+
     public void dragEnteredPane(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
         if(paneElement.getImage() == null && clickedAndDragged != null){
@@ -67,7 +105,8 @@ public class mainYardController implements Initializable {
         try {
             ImageView paneElement = (ImageView) mouseEvent.getSource();
             if (!placedPlants.contains(paneElement.toString()) && shovelActive != true) {
-                switch (paneElement.getId()) {
+                type = paneElement.getId();
+                switch (type) {
                     case "sunflower":
                         clickedAndDragged = (new Image("images/plants/sunflower.gif"));
                         break;
@@ -99,6 +138,27 @@ public class mainYardController implements Initializable {
         ImageView shotView = new ImageView();
         if(clickedAndDragged !=null && !placedPlants.contains(paneElement.toString())) {
             paneElement.setImage(clickedAndDragged);
+            int col = ((GridPane)paneElement.getParent()).getColumnIndex(paneElement);
+            int row = ((GridPane)paneElement.getParent()).getRowIndex(paneElement);
+            switch (type) {
+                case "sunflower":
+                    current.addToGrid(grid, new Sunflower() ,row-1, col);
+//                    System.out.println(grid.get(row-1).get(col).getClass() + " " + (row-1) + col);
+                    break;
+                case "peashooter":
+                    current.addToGrid(grid, new PeaShooter() ,row-1, col);
+                    break;
+                case "snowPeaShooter":
+                    current.addToGrid(grid, new SnowPeaShooter() ,row-1, col);
+                    break;
+                case "walnut":
+                    current.addToGrid(grid, new Wallnut() ,row-1, col);
+                    break;
+                case "cherrybomb":
+                    current.addToGrid(grid, new CherryBomb() ,row-1, col);
+                    break;
+            }
+
             clickedAndDragged = null;
             placedPlants.add(paneElement.toString());
             peas.put(paneElement.toString(),shotView);
