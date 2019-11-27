@@ -1,3 +1,5 @@
+package FXMLcontrollers;
+
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

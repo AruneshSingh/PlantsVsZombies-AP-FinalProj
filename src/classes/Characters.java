@@ -1,3 +1,5 @@
+package classes;
+
 abstract class Characters {
 
     protected int Health;

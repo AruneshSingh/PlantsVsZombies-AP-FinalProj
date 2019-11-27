@@ -1,3 +1,5 @@
+package classes;
+
 import java.io.Serializable;
 
 abstract class Plants extends Characters implements Serializable {
