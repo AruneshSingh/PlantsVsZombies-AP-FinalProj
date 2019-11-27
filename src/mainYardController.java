@@ -34,6 +34,7 @@ public class mainYardController implements Initializable {
     private Set<String> placedPlants;
     private Map<String,ImageView> peas;
     private Map<ImageView, TranslateTransition> transitionMap;
+
     public mainYardController(){
         placedPlants = new HashSet<String>();
         speakerStatus = false;
