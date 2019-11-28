@@ -9,6 +9,7 @@ public class Level implements Serializable {
     private boolean finished;
     private String mode;
     private ArrayList<ArrayList<Characters>> grid;
+    private ArrayList<ArrayList<Zombies>> zombieGrid; // to make it for every level
 
     public Level(int lv, String mode){
         this.level = lv;
