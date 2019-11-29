@@ -240,17 +240,14 @@ public class mainYardController implements Initializable  {
             peas.put(paneElement.toString(),shotView);
 
 
-
-
-
-
+            System.out.println(zombiesInRow);
 
             if(peaShooterSelected == true)
             {
                 peaX = GridPane.getColumnIndex(paneElement);
                 peaY = GridPane.getRowIndex(paneElement);
                 Image image = new Image("images/plants/pea.png");
-                AnimationTimer PeaThread = new Pea(peaX,peaY,10,(GridPane) paneElement.getParent(),image,zombiesInRow.get(peaY-1),transitionMap);
+                AnimationTimer PeaThread = new Pea(peaX,peaY,10,(GridPane) paneElement.getParent(),image,zombiesInRow.get(peaY-1),transitionMap,Zombie);
                 PeaThread.start();
                 peaShooterSelected = false;
             }
@@ -259,7 +256,7 @@ public class mainYardController implements Initializable  {
                 iceY = GridPane.getRowIndex(paneElement);
 //                shotView.setId("20");
                 Image image = new Image("images/plants/snowPea.png");
-                AnimationTimer PeaThread = new Pea(iceX,iceY,20,(GridPane) paneElement.getParent(),image,zombiesInRow.get(iceY-1),transitionMap);
+                AnimationTimer PeaThread = new Pea(iceX,iceY,20,(GridPane) paneElement.getParent(),image,zombiesInRow.get(iceY-1),transitionMap,Zombie);
                 PeaThread.start();
                 iceShooterSelected = false;
             }
@@ -323,7 +320,6 @@ public class mainYardController implements Initializable  {
     //786, 411
     public void moveHead(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
-
         translateTransition.setDuration(Duration.millis(50000));
         translateTransition.setNode(temp);
         translateTransition.setToX(-(temp.getLayoutX() - 411));

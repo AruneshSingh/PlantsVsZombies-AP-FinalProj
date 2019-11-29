@@ -19,7 +19,8 @@ public class Pea extends AnimationTimer {
     GridPane pane;
     ArrayList<ImageView> zombiesInRow;
     private Map<ImageView, TranslateTransition> transitionMap;
-    public Pea(int X, int Y, int damage, GridPane pane, Image image, ArrayList<ImageView> zombiesInRow,Map<ImageView, TranslateTransition> transitionMap){
+    Map<ImageView,Zombies> zombieObject;
+    public Pea(int X, int Y, int damage, GridPane pane, Image image, ArrayList<ImageView> zombiesInRow,Map<ImageView, TranslateTransition> transitionMap,Map<ImageView,Zombies> zombieObject){
         this.X = X;
         this.Y = Y;
         this.damage = damage;
@@ -27,6 +28,7 @@ public class Pea extends AnimationTimer {
         this.image = image;
         this.zombiesInRow = zombiesInRow;
         this.transitionMap = transitionMap;
+        this.zombieObject = zombieObject;
         counter = 0;
     }
 
@@ -46,6 +48,7 @@ public class Pea extends AnimationTimer {
             translateTransition.setCycleCount(1);
             translateTransition.setAutoReverse(false);
             translateTransition.play();
+            new PeaZombieCollisionHandler(view,zombiesInRow,zombieObject,transitionMap).start();
         }
         counter+=1;
     }
