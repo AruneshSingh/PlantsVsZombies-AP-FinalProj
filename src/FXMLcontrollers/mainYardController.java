@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
@@ -31,19 +32,24 @@ import java.util.*;
 public class mainYardController implements Initializable  {
     private int level;
     private String mode;
+    private Level current;
+    private ArrayList<ArrayList<Characters>> grid;
+    private String type;
+    private int[][] zombieArr;
+
+
     private Image clickedAndDragged;
     private ImageView shovelPane, lawnmover;
     private int peaX,peaY,iceX,iceY;
 
 
-    private Level current;
-    private ArrayList<ArrayList<Characters>> grid;
-    private String type;
+
     private ArrayList<Plants> plantListTemp;  //plant list and zombie list will have plants and zombies from the row to pass onto lawnmover and cherrybombs
     private ArrayList<Zombies> zombieListTemp;
 
     @FXML
     public ImageView zombie1, zombie2, zombie3, token, head;
+    public Pane mainYardPane;
 
     public Map<ImageView,Zombies> Zombie = new HashMap<ImageView,Zombies>();
     public ArrayList<ArrayList<ImageView>> zombiesInRow = new ArrayList<ArrayList<ImageView>>();
@@ -64,37 +70,76 @@ public class mainYardController implements Initializable  {
         speakerStatus = false;
         peas = new HashMap<String,ImageView>();
         transitionMap = new HashMap<ImageView, TranslateTransition>();
+        zombieArr = new int[][]{{15,4,1,0},{10,5,4,1},{4,8,4,4},{4,6,5,5},{0,6,10,4}};
 
         zombiesInRow = new ArrayList<ArrayList<ImageView>>();
-        for(int i=0;i<6;i++){
+        for(int i=0;i<5;i++){
             zombiesInRow.add(new ArrayList<ImageView>());
         }
-
-        generateZombies(level);
 
     }
 
     public void generateZombies(int level)
     {
-        Zombies zombie1 = new Skinny();
-        zombiesInRow.get(0).add(this.zombie1);
-        Zombies zombie2 = new Conehead();
-        zombiesInRow.get(1).add(this.zombie2);
-        Zombies zombie3 = new Skinny();
-        zombiesInRow.get(2).add(this.zombie3);
-        Zombie.put(this.zombie1,zombie1);
-        Zombie.put(this.zombie2,zombie2);
-        Zombie.put(this.zombie3,zombie3);
-//        switch (level){
-//
-//        }
+        int[] yPos = new int[] {80,190,310,430,540};
+        Random rand = new Random();
+        ImageView temp;
+        Zombies tempZombie;
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                int random = rand.nextInt(20);
+                temp = new ImageView();
+                temp.setX(1200);
+                temp.setY(yPos[i]);
+                temp.setScaleX(0.8);
+                temp.setScaleY(0.8);
+                temp.setScaleZ(0.8);
+                if(random < zombieArr[level-1][0]){
+                    temp.setImage(new Image("images/zomies/normalZombie.gif"));
+                    tempZombie = new Skinny();
+                }
+                else if (zombieArr[level][0] < random && random < zombieArr[level][1]){
+                    temp.setImage(new Image("images/zomies/coneZombie.gif"));
+                    tempZombie = new Conehead();
+                }
+                else if (zombieArr[level][1] < random && random < zombieArr[level][2]){
+                    temp.setImage(new Image("images/zomies/footballZombie.gif"));
+                    tempZombie = new Football();
+                }
+                else {
+                    temp.setImage(new Image("images/zomies/normalZombie.png"));
+                    tempZombie = new Skinny2();
+                }
+                zombiesInRow.get(i).add(temp);
+                mainYardPane.getChildren().add(temp);
+                Zombie.put(temp,tempZombie);
+                moveZombies(temp);
+            }
+        }
+
+
+
+
+        //Original Code
+//        Zombies zombie1 = new Skinny();
+//        zombiesInRow.get(0).add(this.zombie1);
+//        Zombies zombie2 = new Conehead();
+//        zombiesInRow.get(1).add(this.zombie2);
+//        Zombies zombie3 = new Skinny();
+//        zombiesInRow.get(2).add(this.zombie3);
+//        Zombie.put(this.zombie1,zombie1);
+//        Zombie.put(this.zombie2,zombie2);
+//        Zombie.put(this.zombie3,zombie3);
+
     }
     public void readFile() {
         BufferedReader in;
         try {
-            in = new BufferedReader(new FileReader("currentUser.txt"));
+            in = new BufferedReader(new FileReader("src/gameFiles/currentUser.txt"));
 
-            String temp = in.readLine();
+            String temp;
+            temp = in.readLine();
             temp = in.readLine();
             this.mode = temp;
             temp = in.readLine();
@@ -388,10 +433,15 @@ public class mainYardController implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        moveZombies(zombie1);
-        moveZombies(zombie2);
-        moveZombies(zombie3);
+//        moveZombies(zombie1);
+//        moveZombies(zombie2);
+//        moveZombies(zombie3);
         moveSun(token);
         moveHead(head);
+
+        generateZombies(level);
+
+//        if(mainYardPane==null) System.out.println("Nulllll");
+//        else System.out.println("Yayay");
     }
 }
