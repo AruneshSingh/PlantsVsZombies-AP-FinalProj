@@ -1,11 +1,14 @@
 package classes;
 
+import javafx.animation.AnimationTimer;
+import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
+import threads.SunFlowerThread;
+
 public class Sunflower extends TokenGiver {
 
-    private SunToken token;
 
     public Sunflower(){
-        this.token = new SunToken();
         setHealth(500);
         setWaitingTime(10);
         setSunTokensReq(50);

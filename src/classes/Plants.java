@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 abstract public class Plants extends Characters implements Serializable {
     private int waitingTime;
-    private int sunTokensReq;
+    private static int sunTokensReq;
 
     public void takeDamage(int damage){
         setHealth(getHealth()-damage);
@@ -18,7 +18,7 @@ abstract public class Plants extends Characters implements Serializable {
         this.waitingTime = waitingTime;
     }
 
-    public int getSunTokensReq() {
+    public static int getSunTokensReq() {
         return sunTokensReq;
     }
 

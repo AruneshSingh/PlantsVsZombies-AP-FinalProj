@@ -21,6 +21,8 @@ import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import threads.Pea;
 import classes.Zombies;
+import threads.Sun;
+import threads.SunFlowerThread;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -48,7 +50,7 @@ public class mainYardController implements Initializable  {
     private ArrayList<Zombies> zombieListTemp;
 
     @FXML
-    public ImageView zombie1, zombie2, zombie3, token, head;
+    public ImageView zombie1, zombie2, zombie3, head;
     public Pane mainYardPane;
 
     public Map<ImageView,Zombies> Zombie = new HashMap<ImageView,Zombies>();
@@ -70,7 +72,7 @@ public class mainYardController implements Initializable  {
         speakerStatus = false;
         peas = new HashMap<String,ImageView>();
         transitionMap = new HashMap<ImageView, TranslateTransition>();
-        zombieArr = new int[][]{{15,4,1,0},{10,5,4,1},{4,8,4,4},{4,6,5,5},{0,6,10,4}};
+        zombieArr = new int[][]{{10,8,2,0},{10,5,4,1},{4,8,4,4},{4,6,5,5},{0,6,10,4}};
 
         zombiesInRow = new ArrayList<ArrayList<ImageView>>();
         for(int i=0;i<5;i++){
@@ -89,8 +91,9 @@ public class mainYardController implements Initializable  {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
                 int random = rand.nextInt(20);
+                System.out.println("random: " + random);
                 temp = new ImageView();
-                temp.setX(1200);
+                temp.setX(1200 + j*60);
                 temp.setY(yPos[i]);
                 temp.setScaleX(0.8);
                 temp.setScaleY(0.8);
@@ -99,17 +102,17 @@ public class mainYardController implements Initializable  {
                     temp.setImage(new Image("images/zomies/normalZombie.gif"));
                     tempZombie = new Skinny();
                 }
-                else if (zombieArr[level][0] < random && random < zombieArr[level][1]){
-                    temp.setImage(new Image("images/zomies/coneZombie.gif"));
+                else if (zombieArr[level-1][0] < random && random < zombieArr[level-1][0] + zombieArr[level-1][1]){
+                    temp.setImage(new Image("images/zomies/coneZombie.png"));
                     tempZombie = new Conehead();
                 }
-                else if (zombieArr[level][1] < random && random < zombieArr[level][2]){
+                else if (zombieArr[level-1][0] + zombieArr[level-1][1] < random && random < zombieArr[level-1][0] + zombieArr[level-1][1] + zombieArr[level-1][2]){
                     temp.setImage(new Image("images/zomies/footballZombie.gif"));
                     tempZombie = new Football();
                 }
                 //TODO:Change this to a new zombie type. rn it's normalZombie.gif
                 else {
-                    temp.setImage(new Image("images/zomies/normalZombie.gif"));
+                    temp.setImage(new Image("images/zomies/footballZombie.gif"));
                     tempZombie = new Skinny2();
                 }
                 zombiesInRow.get(i).add(temp);
@@ -184,21 +187,51 @@ public class mainYardController implements Initializable  {
                 type = paneElement.getId();
                 switch (type) {
                     case "sunflower":
-                        clickedAndDragged = (new Image("images/plants/sunflower.gif"));
+                        if(current.getTokenCounter()-50 < 0)
+                            clickedAndDragged = null;
+                        else {
+                            clickedAndDragged = (new Image("images/plants/sunflower.gif"));
+                            current.setTokenCounter(current.getTokenCounter() - 50);
+                            tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
+                        }
                         break;
                     case "peashooter":
-                        clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
-                        peaShooterSelected = true;
+                        if(current.getTokenCounter()-100 < 0)
+                            clickedAndDragged = null;
+                        else {
+                            clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
+                            current.setTokenCounter(current.getTokenCounter() - 100);
+                            tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
+                            peaShooterSelected = true;
+                        }
                         break;
                     case "snowPeaShooter":
-                        clickedAndDragged = (new Image("images/plants/snowPeaPlant.gif"));
-                        iceShooterSelected = true;
+                        if(current.getTokenCounter()-150 < 0)
+                            clickedAndDragged = null;
+                        else {
+                            clickedAndDragged = (new Image("images/plants/snowPeaPlant.gif"));
+                            current.setTokenCounter(current.getTokenCounter() - 150);
+                            tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
+                            iceShooterSelected = true;
+                        }
                         break;
                     case "walnut":
-                        clickedAndDragged = (new Image("images/plants/walnutFullLife.gif"));
+                        if(current.getTokenCounter()-50 < 0)
+                            clickedAndDragged = null;
+                        else {
+                            clickedAndDragged = (new Image("images/plants/walnutFullLife.gif"));
+                            current.setTokenCounter(current.getTokenCounter() - 50);
+                            tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
+                        }
                         break;
                     case "cherrybomb":
-                        clickedAndDragged = (new Image("images/plants/cherryBombPlant.gif"));
+                        if(current.getTokenCounter()-150 < 0)
+                            clickedAndDragged = null;
+                        else {
+                            clickedAndDragged = (new Image("images/plants/cherryBombPlant.gif"));
+                            current.setTokenCounter(current.getTokenCounter() - 150);
+                            tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
+                        }
                         break;
 
                 }
@@ -216,9 +249,13 @@ public class mainYardController implements Initializable  {
             paneElement.setImage(clickedAndDragged);
             int col = ((GridPane)paneElement.getParent()).getColumnIndex(paneElement);
             int row = ((GridPane)paneElement.getParent()).getRowIndex(paneElement);
+            int xVal = (int)paneElement.getLayoutX();
+            int yVal = (int)paneElement.getLayoutY();
             switch (type) {
                 case "sunflower":
                     current.addToGrid(grid, new Sunflower() ,row-1, col);
+                    AnimationTimer sunflower = new SunFlowerThread(mainYardPane, current, tokenCounterLabel, xVal, yVal);
+                    sunflower.start();
 //                    System.out.println(grid.get(row-1).get(col).getClass() + " " + (row-1) + col);
                     break;
                 case "peashooter":
@@ -272,10 +309,6 @@ public class mainYardController implements Initializable  {
             shovelPane.setEffect(null);
             shovelActive = false;
         }
-    }
-
-    public void tokenCount(MouseEvent mouseEvent) {
-        tokenCounterLabel.setText("25");
     }
 
     public void shovelAction(MouseEvent mouseEvent) {
@@ -346,18 +379,6 @@ public class mainYardController implements Initializable  {
         }
         catch (NullPointerException e) {
         }
-    }
-
-
-    public void moveSun(ImageView temp) {
-        TranslateTransition translateTransition = new TranslateTransition();
-
-        translateTransition.setDuration(Duration.millis(10000));
-        translateTransition.setNode(temp);
-        translateTransition.setToY(660);
-        translateTransition.setCycleCount(1);
-        translateTransition.setAutoReverse(false);
-        translateTransition.play();
     }
 
     public void hoverIconIn(MouseEvent mouseEvent){
@@ -433,12 +454,12 @@ public class mainYardController implements Initializable  {
 //        moveZombies(zombie1);
 //        moveZombies(zombie2);
 //        moveZombies(zombie3);
-        moveSun(token);
         moveHead(head);
+
+        AnimationTimer sun = new Sun(mainYardPane, current, tokenCounterLabel);
+        sun.start();
 
         generateZombies(level);
 
-//        if(mainYardPane==null) System.out.println("Nulllll");
-//        else System.out.println("Yayay");
     }
 }

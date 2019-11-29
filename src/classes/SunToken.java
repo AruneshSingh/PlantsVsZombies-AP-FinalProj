@@ -1,19 +1,24 @@
 package classes;
 
+import javafx.animation.TranslateTransition;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
 import java.io.Serializable;
 
 public class SunToken implements Serializable {
     private int disappearTime;
     private boolean collected;
-    private int value;
+    private final int value;
+    private final ImageView tokenSprite;
 
-    SunToken(){
-        this.disappearTime = 10;
+    public SunToken(){
+        this.disappearTime = 2;
         this.collected = false;
         this.value = 25;
+        this.tokenSprite = new ImageView("images/plants/sun.gif");
     }
 
-    //TODO: Run this function every second.
     public boolean isExpired(){
         if(getDisappearTime() == 0 && !isCollected())
             return true;
@@ -21,6 +26,16 @@ public class SunToken implements Serializable {
             setDisappearTime(getDisappearTime() - 1);
             return false;
         }
+    }
+
+    public void moveSun() {
+        TranslateTransition translateTransition = new TranslateTransition();
+        translateTransition.setDuration(Duration.millis(10000));
+        translateTransition.setNode(tokenSprite);
+        translateTransition.setToY(660);
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.play();
     }
 
     public int getDisappearTime() {
@@ -37,5 +52,18 @@ public class SunToken implements Serializable {
 
     public void setCollected(boolean collected) {
         this.collected = collected;
+    }
+
+    public ImageView getTokenSprite() {
+        return tokenSprite;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setSpriteXY(int x, int y) {
+        tokenSprite.setX(x);
+        tokenSprite.setY(y);
     }
 }

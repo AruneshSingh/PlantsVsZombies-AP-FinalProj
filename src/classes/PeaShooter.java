@@ -10,7 +10,7 @@ public class PeaShooter extends Shooter {
         this.pea = new Bullet("Pea");
         setHealth(500);
         setWaitingTime(10);
-        setSunTokensReq(100);
+        setSunTokensReq(50);
 
     }
 

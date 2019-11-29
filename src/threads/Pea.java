@@ -34,7 +34,7 @@ public class Pea extends AnimationTimer {
 
     @Override
     public void handle(long l) {
-        if(zombiesInRow.size()!=0&&counter%30==0) {
+        if(zombiesInRow.size()!=0&&counter%70==0) {
             counter = 0;
             ImageView view = new ImageView();
             view.setImage(image);

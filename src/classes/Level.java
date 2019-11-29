@@ -5,11 +5,10 @@ import java.util.ArrayList;
 
 public class Level implements Serializable {
     private int level;
-    private int tokenCounter;
+    private volatile int tokenCounter;
     private boolean finished;
     private String mode;
     private ArrayList<ArrayList<Characters>> grid;
-    private ArrayList<ArrayList<Zombies>> zombieGrid; // to make it for every level
 
     public Level(int lv, String mode){
         this.level = lv;
@@ -36,9 +35,12 @@ public class Level implements Serializable {
         grid.get(row).set(column, c);
     }
 
-    //TODO: Generate suntokens continuously
-    public void generateSunToken(){
+    public int getTokenCounter() {
+        return tokenCounter;
+    }
 
+    public void setTokenCounter(int tokenCounter) {
+        this.tokenCounter = tokenCounter;
     }
 
 }
