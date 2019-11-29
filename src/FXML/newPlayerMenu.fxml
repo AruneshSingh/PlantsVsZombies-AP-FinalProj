@@ -14,7 +14,7 @@
             <Image url="@../images/newPlayerMenu.png" />
          </image>
       </ImageView>
-      <TextField layoutX="529.0" layoutY="332.0" prefHeight="39.0" prefWidth="402.0">
+      <TextField layoutX="529.0" layoutY="332.0" onKeyTyped="#textEntered" prefHeight="39.0" prefWidth="402.0">
          <font>
             <Font name="Calibri" size="22.0" />
          </font></TextField>

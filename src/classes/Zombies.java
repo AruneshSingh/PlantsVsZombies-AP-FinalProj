@@ -44,39 +44,3 @@ abstract public class Zombies extends Characters implements Serializable {
         this.rabid = mode.equals("Rabid"); //Returns true if rabid, else false
     }
 }
-
-class Skinny extends Zombies {
-
-    Skinny(){
-        setHealth(100);
-        setDamage(10);
-        setSpeed(5);
-    }
-}
-
-class Conehead extends Zombies {
-
-    Conehead(){
-        setHealth(130);
-        setDamage(15);
-        setSpeed(5);
-    }
-}
-
-class Football extends Zombies {
-
-    Football(){
-        setHealth(150);
-        setDamage(15);
-        setSpeed(7);
-    }
-}
-
-class Skinny2 extends Zombies {
-
-    Skinny2(){
-        setHealth(100);
-        setDamage(10);
-        setSpeed(5);
-    }
-}

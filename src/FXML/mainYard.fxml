@@ -178,7 +178,7 @@
             <Image url="@../images/timerBar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="zombie" fitHeight="123.0" fitWidth="76.0" layoutX="1304.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="zombie1" fitHeight="123.0" fitWidth="76.0" layoutX="1304.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/zomies/normalZombie.gif" />
          </image>

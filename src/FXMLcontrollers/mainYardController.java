@@ -1,6 +1,7 @@
 package FXMLcontrollers;
 
 import classes.*;
+import javafx.animation.AnimationTimer;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
+import threads.Pea;
+import classes.Zombies;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -25,12 +28,11 @@ import java.net.URL;
 import java.util.*;
 
 
-public class mainYardController implements Initializable {
-
+public class mainYardController implements Initializable  {
     private int level;
     private String mode;
     private Image clickedAndDragged;
-    private  ImageView shovelPane, lawnmover;
+    private ImageView shovelPane, lawnmover;
     private int peaX,peaY,iceX,iceY;
 
 
@@ -41,7 +43,10 @@ public class mainYardController implements Initializable {
     private ArrayList<Zombies> zombieListTemp;
 
     @FXML
-    public ImageView zombie, zombie2, zombie3, token, head;
+    public ImageView zombie1, zombie2, zombie3, token, head;
+
+    public Map<ImageView,Zombies> Zombie = new HashMap<ImageView,Zombies>();
+    public ArrayList<ArrayList<ImageView>> zombiesInRow = new ArrayList<ArrayList<ImageView>>();
 
     @FXML
     public Label tokenCounterLabel;
@@ -52,7 +57,6 @@ public class mainYardController implements Initializable {
     private Map<ImageView, TranslateTransition> transitionMap;
 
     public mainYardController(){
-
         readFile();
         current = new Level(level, mode);
         grid = current.getGrid();
@@ -60,17 +64,43 @@ public class mainYardController implements Initializable {
         speakerStatus = false;
         peas = new HashMap<String,ImageView>();
         transitionMap = new HashMap<ImageView, TranslateTransition>();
+
+        zombiesInRow = new ArrayList<ArrayList<ImageView>>();
+        for(int i=0;i<6;i++){
+            zombiesInRow.add(new ArrayList<ImageView>());
+        }
+
+        generateZombies(level);
+
     }
 
+    public void generateZombies(int level)
+    {
+        Zombies zombie1 = new Skinny();
+        zombiesInRow.get(0).add(this.zombie1);
+        Zombies zombie2 = new Conehead();
+        zombiesInRow.get(1).add(this.zombie2);
+        Zombies zombie3 = new Skinny();
+        zombiesInRow.get(2).add(this.zombie3);
+        Zombie.put(this.zombie1,zombie1);
+        Zombie.put(this.zombie2,zombie2);
+        Zombie.put(this.zombie3,zombie3);
+//        switch (level){
+//
+//        }
+    }
     public void readFile() {
         BufferedReader in;
         try {
-            in = new BufferedReader(new FileReader("E:\\BTech CSD\\Sem 3\\PlantsVsZombies-AP-FinalProj\\src\\FXMLcontrollers\\currentUser.txt"));
+            in = new BufferedReader(new FileReader("currentUser.txt"));
+
             String temp = in.readLine();
-            this.level = Integer.parseInt(temp);
             temp = in.readLine();
             this.mode = temp;
-        } catch (IOException e){
+            temp = in.readLine();
+            this.level = Integer.parseInt(temp);
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -162,25 +192,29 @@ public class mainYardController implements Initializable {
             clickedAndDragged = null;
             placedPlants.add(paneElement.toString());
             peas.put(paneElement.toString(),shotView);
+
+
+
+
+
+
+
             if(peaShooterSelected == true)
             {
-                shotView.setImage(new Image("images/plants/pea.png"));
-                peaX = GridPane.getRowIndex(paneElement);
-                peaY = GridPane.getColumnIndex(paneElement);
-//                System.out.println(peaX);
-//                System.out.println(peaY);
-
-                ((GridPane) paneElement.getParent()).add(shotView,peaY+1,peaX);
-                movePea(shotView);
+                peaX = GridPane.getColumnIndex(paneElement);
+                peaY = GridPane.getRowIndex(paneElement);
+                Image image = new Image("images/plants/pea.png");
+                AnimationTimer PeaThread = new Pea(peaX,peaY,10,(GridPane) paneElement.getParent(),image,zombiesInRow.get(peaY-1),transitionMap);
+                PeaThread.start();
                 peaShooterSelected = false;
             }
             if(iceShooterSelected == true) {
-                iceX = GridPane.getRowIndex(paneElement);
-                iceY = GridPane.getColumnIndex(paneElement);
-                shotView.setImage(new Image("images/plants/snowPea.png"));
-
-                ((GridPane) paneElement.getParent()).add(shotView,iceY+1,iceX);
-                movePea(shotView);
+                iceX = GridPane.getColumnIndex(paneElement);
+                iceY = GridPane.getRowIndex(paneElement);
+//                shotView.setId("20");
+                Image image = new Image("images/plants/snowPea.png");
+                AnimationTimer PeaThread = new Pea(iceX,iceY,20,(GridPane) paneElement.getParent(),image,zombiesInRow.get(iceY-1),transitionMap);
+                PeaThread.start();
                 iceShooterSelected = false;
             }
 
@@ -231,7 +265,7 @@ public class mainYardController implements Initializable {
 
     public void moveZombies(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
-
+        transitionMap.put(temp,translateTransition);
         translateTransition.setDuration(Duration.millis(20000));
         translateTransition.setNode(temp);
         translateTransition.setToX(-(temp.getLayoutX() - 230));
@@ -266,6 +300,7 @@ public class mainYardController implements Initializable {
         try {
             TranslateTransition translateTransition = transitionMap.get(temp);
             translateTransition.stop();
+            temp.setImage(null);
         }
         catch (NullPointerException e) {
         }
@@ -353,7 +388,7 @@ public class mainYardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        moveZombies(zombie);
+        moveZombies(zombie1);
         moveZombies(zombie2);
         moveZombies(zombie3);
         moveSun(token);

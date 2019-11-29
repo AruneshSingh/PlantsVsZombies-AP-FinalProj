@@ -1,5 +1,7 @@
 package FXMLcontrollers;
 
+import java.io.*;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -9,7 +11,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class levelSelectionController {
     private boolean selectedButton = false;
@@ -46,6 +53,18 @@ public class levelSelectionController {
     public void startClicked(MouseEvent mouseEvent) throws  IOException {
         if(selectedButton) {
             Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            File f = new File("src/gameFiles/currentUser.txt");
+            f.createNewFile();
+            List<String> lines = Files.readAllLines(Paths.get("src/gameFiles/currentUser.txt"), StandardCharsets.UTF_8);
+            System.out.println(selectedPane.getId());
+            if(lines.size()==2) {
+                lines.add(selectedPane.getId());
+            }
+            else {
+                lines.set(2, selectedPane.getId());
+            }
+            System.out.println(lines);
+            Files.write(Paths.get("src/gameFiles/currentUser.txt"), lines, StandardCharsets.UTF_8);
             Parent root = FXMLLoader.load(getClass().getResource("../FXML/mainYard.fxml"));
             stage.setScene(new Scene(root));
             stage.show();
