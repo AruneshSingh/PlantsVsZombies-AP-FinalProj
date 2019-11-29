@@ -107,8 +107,9 @@ public class mainYardController implements Initializable  {
                     temp.setImage(new Image("images/zomies/footballZombie.gif"));
                     tempZombie = new Football();
                 }
+                //TODO:Change this to a new zombie type. rn it's normalZombie.gif
                 else {
-                    temp.setImage(new Image("images/zomies/normalZombie.png"));
+                    temp.setImage(new Image("images/zomies/normalZombie.gif"));
                     tempZombie = new Skinny2();
                 }
                 zombiesInRow.get(i).add(temp);
@@ -313,7 +314,7 @@ public class mainYardController implements Initializable  {
         transitionMap.put(temp,translateTransition);
         translateTransition.setDuration(Duration.millis(20000));
         translateTransition.setNode(temp);
-        translateTransition.setToX(-(temp.getLayoutX() - 230));
+        translateTransition.setToX(temp.getLayoutX() - 190*5);
         translateTransition.setCycleCount(1);
         translateTransition.setAutoReverse(false);
         translateTransition.play();
