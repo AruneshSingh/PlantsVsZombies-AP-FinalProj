@@ -20,7 +20,8 @@ public class Pea extends AnimationTimer {
     ArrayList<ImageView> zombiesInRow;
     private Map<ImageView, TranslateTransition> transitionMap;
     Map<ImageView,Zombies> zombieObject;
-    public Pea(int X, int Y, int damage, GridPane pane, Image image, ArrayList<ImageView> zombiesInRow,Map<ImageView, TranslateTransition> transitionMap,Map<ImageView,Zombies> zombieObject){
+    ImageView plantImageView;
+    public Pea(int X, int Y, int damage, GridPane pane, Image image, ArrayList<ImageView> zombiesInRow,Map<ImageView, TranslateTransition> transitionMap,Map<ImageView,Zombies> zombieObject, ImageView plantImageView){
         this.X = X;
         this.Y = Y;
         this.damage = damage;
@@ -29,11 +30,16 @@ public class Pea extends AnimationTimer {
         this.zombiesInRow = zombiesInRow;
         this.transitionMap = transitionMap;
         this.zombieObject = zombieObject;
+        this.plantImageView = plantImageView;
         counter = 0;
     }
 
     @Override
     public void handle(long l) {
+        if(plantImageView.getImage()==null){
+            stop();
+            return;
+        }
         if(zombiesInRow.size()!=0&&counter%70==0) {
             counter = 0;
             ImageView view = new ImageView();
@@ -42,7 +48,7 @@ public class Pea extends AnimationTimer {
             pane.add(view, X + 1, Y);
             TranslateTransition translateTransition = new TranslateTransition();
             transitionMap.put(view,translateTransition);
-            translateTransition.setDuration(Duration.millis(1000));
+            translateTransition.setDuration(Duration.millis(2000));
             translateTransition.setNode(view);
             translateTransition.setToX(view.getLayoutX() + 1300);
             translateTransition.setCycleCount(1);

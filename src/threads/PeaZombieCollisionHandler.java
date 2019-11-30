@@ -25,19 +25,31 @@ public class PeaZombieCollisionHandler extends AnimationTimer {
     public void handle(long l) {
 //        System.out.println(Zombie);
 //        System.out.println(Zombie.size());
-
-        if(Zombie.size()!=0&&Pea.getBoundsInParent().intersects(Zombie.get(0).getBoundsInParent())){
-            Pea.setVisible(false);
-            transitionMap.get(Pea).stop();
-//            System.out.println(zombieObject);
-//            System.out.println(Zombie);
-//            System.out.println(Pea.getId());
-            zombieObject.get(Zombie.get(0)).takeDamage(Integer.parseInt(Pea.getId()));
-//            ((GridPane) Pea.getParent()).getChildren().remove(Pea);
-//            if(zombieObject.get(Zombie.get(0)).getHealth()<=0) {
-//                Zombie.get(0).setVisible(false);
-//                zombieObject.remove(Zombie.get(0));
-//                ((Pane)Zombie.get(0).getParent()).getChildren().remove(Zombie.get(0));
+        for(int i=0;i<Zombie.size();i++) {
+//            System.out.println(Pea.getTranslateX()+" "+Zombie.get(i).getTranslateX());
+            if (Zombie.size() != 0 && Pea.getBoundsInParent().intersects(Zombie.get(i).getBoundsInParent())) {
+                Pea.setImage(null);
+                transitionMap.get(Pea).stop();
+                Pea.setVisible(false);
+                //            System.out.println(zombieObject);
+                //            System.out.println(Zombie);
+                //            System.out.println(Pea.getId());
+                zombieObject.get(Zombie.get(i)).takeDamage(Integer.parseInt(Pea.getId()));
+                ((GridPane) Pea.getParent()).getChildren().remove(Pea);
+                if (zombieObject.get(Zombie.get(0)).getHealth() <= 0) {
+                    Zombie.get(i).setImage(null);
+                    Zombie.get(i).setVisible(false);
+                    zombieObject.remove(Zombie.get(0));
+                    ((Pane) Zombie.get(i).getParent()).getChildren().remove(Zombie.get(i));
+                    Zombie.remove(i);
+                }
+                stop();
+                return;
+            }
+//            else if(Pea.getTranslateX()>=750){
+//                Pea.setImage(null);
+//                transitionMap.get(Pea).stop();
+//                return;
 //            }
         }
     }

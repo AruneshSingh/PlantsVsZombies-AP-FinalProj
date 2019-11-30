@@ -23,6 +23,7 @@ import threads.Pea;
 import classes.Zombies;
 import threads.Sun;
 import threads.SunFlowerThread;
+import threads.ZombiePlantCollisionHandler;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -153,10 +154,6 @@ public class mainYardController implements Initializable  {
         }
     }
 
-
-
-
-
     //Functions Needed by SCENE BUILDER
     // --------------------------------------------------------
 
@@ -195,14 +192,14 @@ public class mainYardController implements Initializable  {
                         }
                         break;
                     case "peashooter":
-                        if(current.getTokenCounter()-100 < 0)
-                            clickedAndDragged = null;
-                        else {
+//                        if(current.getTokenCounter()-100 < 0)
+//                            clickedAndDragged = null;
+//                        else {
                             clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
                             current.setTokenCounter(current.getTokenCounter() - 100);
                             tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
                             peaShooterSelected = true;
-                        }
+//                        }
                         break;
                     case "snowPeaShooter":
                         if(current.getTokenCounter()-150 < 0)
@@ -244,6 +241,7 @@ public class mainYardController implements Initializable  {
     public void imagePaneDrop(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
         ImageView shotView = new ImageView();
+        Plants newPlant = new Sunflower();
         if(clickedAndDragged !=null && !placedPlants.contains(paneElement.toString())) {
             paneElement.setImage(clickedAndDragged);
             int col = ((GridPane)paneElement.getParent()).getColumnIndex(paneElement);
@@ -252,27 +250,34 @@ public class mainYardController implements Initializable  {
             int yVal = (int)paneElement.getLayoutY();
             switch (type) {
                 case "sunflower":
-                    current.addToGrid(grid, new Sunflower() ,row-1, col);
+                    newPlant = new Sunflower();
+                    current.addToGrid(grid, newPlant ,row-1, col);
                     AnimationTimer sunflower = new SunFlowerThread(mainYardPane, current, tokenCounterLabel, xVal, yVal);
                     sunflower.start();
 //                    System.out.println(grid.get(row-1).get(col).getClass() + " " + (row-1) + col);
                     break;
                 case "peashooter":
-                    current.addToGrid(grid, new PeaShooter() ,row-1, col);
+                    newPlant =  new PeaShooter();
+                    current.addToGrid(grid, newPlant,row-1, col);
                     break;
                 case "snowPeaShooter":
-                    current.addToGrid(grid, new SnowPeaShooter() ,row-1, col);
+                    newPlant = new SnowPeaShooter();
+                    current.addToGrid(grid, newPlant,row-1, col);
                     break;
                 case "walnut":
-                    current.addToGrid(grid, new Wallnut() ,row-1, col);
+                    newPlant = new Wallnut();
+                    current.addToGrid(grid, newPlant,row-1, col);
                     break;
                 case "cherrybomb":
-                    current.addToGrid(grid, new CherryBomb() ,row-1, col);
+                    newPlant = new CherryBomb();
+                    current.addToGrid(grid, newPlant,row-1, col);
                     break;
             }
 
             clickedAndDragged = null;
             placedPlants.add(paneElement.toString());
+            AnimationTimer collisionCheck = new ZombiePlantCollisionHandler(paneElement,zombiesInRow.get(row-1),transitionMap,newPlant,Zombie,placedPlants);
+            collisionCheck.start();
             peas.put(paneElement.toString(),shotView);
 
 
@@ -283,7 +288,7 @@ public class mainYardController implements Initializable  {
                 peaX = GridPane.getColumnIndex(paneElement);
                 peaY = GridPane.getRowIndex(paneElement);
                 Image image = new Image("images/plants/pea.png");
-                AnimationTimer PeaThread = new Pea(peaX,peaY,10,(GridPane) paneElement.getParent(),image,zombiesInRow.get(peaY-1),transitionMap,Zombie);
+                AnimationTimer PeaThread = new Pea(peaX,peaY,10,(GridPane) paneElement.getParent(),image,zombiesInRow.get(peaY-1),transitionMap,Zombie,paneElement);
                 PeaThread.start();
                 peaShooterSelected = false;
             }
@@ -292,7 +297,7 @@ public class mainYardController implements Initializable  {
                 iceY = GridPane.getRowIndex(paneElement);
 //                shotView.setId("20");
                 Image image = new Image("images/plants/snowPea.png");
-                AnimationTimer PeaThread = new Pea(iceX,iceY,20,(GridPane) paneElement.getParent(),image,zombiesInRow.get(iceY-1),transitionMap,Zombie);
+                AnimationTimer PeaThread = new Pea(iceX,iceY,20,(GridPane) paneElement.getParent(),image,zombiesInRow.get(iceY-1),transitionMap,Zombie,paneElement);
                 PeaThread.start();
                 iceShooterSelected = false;
             }
