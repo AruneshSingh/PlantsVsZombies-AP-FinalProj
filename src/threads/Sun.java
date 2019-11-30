@@ -35,7 +35,7 @@ public class Sun extends AnimationTimer {
         Random rand = new Random();
 
         counter += 1;
-        if (counter%600 == 0){
+        if (counter%720 == 0){
             int r = rand.nextInt(10);
             counter = 0;
             SunToken sun = new SunToken();

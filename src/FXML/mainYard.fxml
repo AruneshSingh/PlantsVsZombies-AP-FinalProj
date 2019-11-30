@@ -22,7 +22,7 @@
             <Image url="@../images/sunTokenCounter.png" />
          </image>
       </ImageView>
-      <Label fx:id="tokenCounterLabel" layoutX="147.0" layoutY="40.0" text="0" textFill="#8a3a18">
+      <Label fx:id="tokenCounterLabel" layoutX="147.0" layoutY="40.0" text="50" textFill="#8a3a18">
          <font>
             <Font name="Calibri Bold" size="25.0" />
          </font>
@@ -176,21 +176,6 @@
       <ImageView fitHeight="60.0" fitWidth="410.0" layoutX="423.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/timerBar.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="zombie1" fitHeight="123.0" fitWidth="76.0" layoutX="1304.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/normalZombie.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="zombie2" fitHeight="128.0" fitWidth="98.0" layoutX="1452.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/footballZombie.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="zombie3" fitHeight="123.0" fitWidth="76.0" layoutX="1339.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/zomies/normalZombie.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="head" fitHeight="130.0" fitWidth="98.0" layoutX="779.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">

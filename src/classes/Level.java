@@ -12,7 +12,7 @@ public class Level implements Serializable {
 
     public Level(int lv, String mode){
         this.level = lv;
-        this.tokenCounter = 0;
+        this.tokenCounter = 100;
         this.finished = false;
         this.mode = mode;
         this.grid = new ArrayList<ArrayList<Characters>>(5);

@@ -20,6 +20,8 @@ public class SunFlowerThread extends AnimationTimer {
         this.pane = pane;
         this.lv = lv;
         this.label = label;
+        this.x = x;
+        this.y = y;
     }
 
     @Override
@@ -28,11 +30,11 @@ public class SunFlowerThread extends AnimationTimer {
         Random rand = new Random();
 
         counter += 1;
-        if (counter%500 == 0){
+        if (counter%720 == 0){
             int r = rand.nextInt(10);
             counter = 0;
             SunToken sun = new SunToken();
-            sun.setSpriteXY(x+ 100, y+ 100);
+            sun.setSpriteXY(x + 220, y);
             pane.getChildren().add(sun.getTokenSprite());
 //            sun.moveSun();
             if(sun.getTokenSprite().isVisible()){

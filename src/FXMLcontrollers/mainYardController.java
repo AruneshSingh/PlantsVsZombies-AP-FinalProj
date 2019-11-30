@@ -50,7 +50,7 @@ public class mainYardController implements Initializable  {
     private ArrayList<Zombies> zombieListTemp;
 
     @FXML
-    public ImageView zombie1, zombie2, zombie3, head;
+    public ImageView head;
     public Pane mainYardPane;
 
     public Map<ImageView,Zombies> Zombie = new HashMap<ImageView,Zombies>();
@@ -84,6 +84,7 @@ public class mainYardController implements Initializable  {
     public void generateZombies(int level)
     {
         int[] yPos = new int[] {80,190,310,430,540};
+        int[] seedPos = new int[] {100,500,1000,200,800};
         Random rand = new Random();
         ImageView temp;
         Zombies tempZombie;
@@ -91,9 +92,9 @@ public class mainYardController implements Initializable  {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 4; j++) {
                 int random = rand.nextInt(20);
-                System.out.println("random: " + random);
+                int random2 = rand.nextInt(5);
                 temp = new ImageView();
-                temp.setX(1200 + j*60);
+                temp.setX(seedPos[random2] + 1200 + j*200);
                 temp.setY(yPos[i]);
                 temp.setScaleX(0.8);
                 temp.setScaleY(0.8);
@@ -118,25 +119,23 @@ public class mainYardController implements Initializable  {
                 zombiesInRow.get(i).add(temp);
                 mainYardPane.getChildren().add(temp);
                 Zombie.put(temp,tempZombie);
-                moveZombies(temp);
+                moveZombies(temp, tempZombie);
             }
         }
 
-
-
-
-        //Original Code
-//        Zombies zombie1 = new Skinny();
-//        zombiesInRow.get(0).add(this.zombie1);
-//        Zombies zombie2 = new Conehead();
-//        zombiesInRow.get(1).add(this.zombie2);
-//        Zombies zombie3 = new Skinny();
-//        zombiesInRow.get(2).add(this.zombie3);
-//        Zombie.put(this.zombie1,zombie1);
-//        Zombie.put(this.zombie2,zombie2);
-//        Zombie.put(this.zombie3,zombie3);
-
     }
+
+    public void moveZombies(ImageView temp, Zombies tempZombie) {
+        TranslateTransition translateTransition = new TranslateTransition();
+        transitionMap.put(temp,translateTransition);
+        translateTransition.setDuration(Duration.millis(1000 * ((temp.getX()-200)/tempZombie.getSpeed())));
+        translateTransition.setNode(temp);
+        translateTransition.setToX(200-temp.getX());
+        translateTransition.setCycleCount(1);
+        translateTransition.setAutoReverse(false);
+        translateTransition.play();
+    }
+
     public void readFile() {
         BufferedReader in;
         try {
@@ -339,17 +338,6 @@ public class mainYardController implements Initializable  {
         translateTransition.play();
     }
 
-    public void moveZombies(ImageView temp) {
-        TranslateTransition translateTransition = new TranslateTransition();
-        transitionMap.put(temp,translateTransition);
-        translateTransition.setDuration(Duration.millis(20000));
-        translateTransition.setNode(temp);
-        translateTransition.setToX(temp.getLayoutX() - 190*5);
-        translateTransition.setCycleCount(1);
-        translateTransition.setAutoReverse(false);
-        translateTransition.play();
-    }
-
     //786, 411
     public void moveHead(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
@@ -451,9 +439,6 @@ public class mainYardController implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        moveZombies(zombie1);
-//        moveZombies(zombie2);
-//        moveZombies(zombie3);
         moveHead(head);
 
         AnimationTimer sun = new Sun(mainYardPane, current, tokenCounterLabel);
