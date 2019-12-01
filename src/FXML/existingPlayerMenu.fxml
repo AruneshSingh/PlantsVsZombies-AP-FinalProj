@@ -23,7 +23,7 @@
             <Image url="@../images/playerBoard.png" />
          </image>
       </ImageView>
-      <Pane layoutX="317.0" layoutY="329.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
+      <Pane fx:id="player1" layoutX="317.0" layoutY="329.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
             <Label layoutX="142.0" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="26.0" prefWidth="203.0" text="Arunesh Singh" textFill="WHITE">
                <font>
@@ -37,7 +37,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="317.0" layoutY="363.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
+      <Pane fx:id="player2" layoutX="317.0" layoutY="363.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
             <Label layoutX="142.0" prefHeight="26.0" prefWidth="203.0" text="Udhvarg Chaturvedi" textFill="WHITE">
                <font>
@@ -51,7 +51,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="317.0" layoutY="396.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
+      <Pane fx:id="player3" layoutX="317.0" layoutY="396.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
             <Label layoutX="142.0" prefHeight="26.0" prefWidth="203.0" text="Smera Goel" textFill="WHITE">
                <font>
@@ -65,7 +65,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="317.0" layoutY="430.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
+      <Pane fx:id="player4" layoutX="317.0" layoutY="430.0" onDragEntered="#playerHoverIn" onDragExited="#playerHoverOut" onMouseDragEntered="#playerSelection" onMouseEntered="#playerHoverIn" onMouseExited="#playerHoverOut" onMousePressed="#playerSelection" prefHeight="39.0" prefWidth="656.0">
          <children>
             <Label layoutX="142.0" prefHeight="26.0" prefWidth="203.0" text="Rishabh Devgon" textFill="WHITE">
                <font>

@@ -157,7 +157,7 @@
             <Image url="@../images/pause.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="977.0" layoutY="24.0" onMouseEntered="#hoverIconIn" onMouseExited="#hoverIconOut" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="977.0" layoutY="24.0" onMouseClicked="#restartGame" onMouseEntered="#hoverIconIn" onMouseExited="#hoverIconOut" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/restartLevel.png" />
          </image>
@@ -167,7 +167,7 @@
             <Image url="@../images/soundOff.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="1110.0" layoutY="24.0" onMouseEntered="#hoverIconIn" onMouseExited="#hoverIconOut" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="60.0" fitWidth="55.0" layoutX="1110.0" layoutY="24.0" onMouseClicked="#exitButtonClick" onMouseEntered="#hoverIconIn" onMouseExited="#hoverIconOut" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/save.png" />
          </image>
@@ -183,5 +183,15 @@
             <Image url="@../images/timelineHead.png" />
          </image>
       </ImageView>
+      <Label fx:id="levelLabel" layoutX="430.0" layoutY="700.0" text="LV: ">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="playerLabel" layoutX="584.0" layoutY="700.0" text="Name">
+         <font>
+            <Font name="Calibri" size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

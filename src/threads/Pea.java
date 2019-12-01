@@ -40,7 +40,7 @@ public class Pea extends AnimationTimer {
             stop();
             return;
         }
-        if(zombiesInRow.size()!=0&&counter%70==0) {
+        if(zombiesInRow.size()!=0&&counter%60==0) {
             counter = 0;
             ImageView view = new ImageView();
             view.setImage(image);

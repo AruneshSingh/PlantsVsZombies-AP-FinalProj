@@ -36,6 +36,7 @@ public class newPlayerMenuController {
         Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../FXML/modeSelection.fxml"));
         File user = new File("src/gameFiles/currentUser.txt");
+        user.delete();
         user.createNewFile();
         List<String> lines = Files.readAllLines(Paths.get("src/gameFiles/currentUser.txt"), StandardCharsets.UTF_8);
         if(lines.size()==0) {

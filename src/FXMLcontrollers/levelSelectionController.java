@@ -54,9 +54,11 @@ public class levelSelectionController {
         if(selectedButton) {
             Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
             File f = new File("src/gameFiles/currentUser.txt");
+            String name;
             f.createNewFile();
             List<String> lines = Files.readAllLines(Paths.get("src/gameFiles/currentUser.txt"), StandardCharsets.UTF_8);
             System.out.println(selectedPane.getId());
+            name = lines.get(0);
             if(lines.size()==2) {
                 lines.add(selectedPane.getId());
             }
@@ -65,6 +67,7 @@ public class levelSelectionController {
             }
             System.out.println(lines);
             Files.write(Paths.get("src/gameFiles/currentUser.txt"), lines, StandardCharsets.UTF_8);
+            Files.write(Paths.get("src/savedFiles/"+ name +".txt"), lines, StandardCharsets.UTF_8);
             Parent root = FXMLLoader.load(getClass().getResource("../FXML/mainYard.fxml"));
             stage.setScene(new Scene(root));
             stage.show();

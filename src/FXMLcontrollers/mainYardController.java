@@ -28,12 +28,14 @@ import threads.ZombiePlantCollisionHandler;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.*;
 
 
-public class mainYardController implements Initializable  {
+public class mainYardController implements Initializable, Serializable {
     private int level;
+    private String name;
     private String mode;
     private Level current;
     private ArrayList<ArrayList<Characters>> grid;
@@ -46,19 +48,14 @@ public class mainYardController implements Initializable  {
     private int peaX,peaY,iceX,iceY;
 
 
-
-    private ArrayList<Plants> plantListTemp;  //plant list and zombie list will have plants and zombies from the row to pass onto lawnmover and cherrybombs
-    private ArrayList<Zombies> zombieListTemp;
-
     @FXML
     public ImageView head;
     public Pane mainYardPane;
+    public Label tokenCounterLabel, levelLabel, playerLabel;
 
     public Map<ImageView,Zombies> Zombie = new HashMap<ImageView,Zombies>();
     public ArrayList<ArrayList<ImageView>> zombiesInRow = new ArrayList<ArrayList<ImageView>>();
 
-    @FXML
-    public Label tokenCounterLabel;
 
     private boolean shovelActive,speakerStatus,play,peaShooterSelected,iceShooterSelected;
     private Set<String> placedPlants;
@@ -144,6 +141,7 @@ public class mainYardController implements Initializable  {
 
             String temp;
             temp = in.readLine();
+            this.name = temp;
             temp = in.readLine();
             this.mode = temp;
             temp = in.readLine();
@@ -331,6 +329,13 @@ public class mainYardController implements Initializable  {
 //        System.out.println(shovelActive);
     }
 
+    public void restartGame(MouseEvent mouseEvent) throws IOException {
+        Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../FXML/mainYard.fxml"));
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
     public void moveLawnmover(MouseEvent mouseEvent) {
         lawnmover = (ImageView) mouseEvent.getSource();
         TranslateTransition translateTransition = new TranslateTransition();
@@ -346,7 +351,7 @@ public class mainYardController implements Initializable  {
     //786, 411
     public void moveHead(ImageView temp) {
         TranslateTransition translateTransition = new TranslateTransition();
-        translateTransition.setDuration(Duration.millis(50000));
+        translateTransition.setDuration(Duration.millis(700000));
         translateTransition.setNode(temp);
         translateTransition.setToX(-(temp.getLayoutX() - 411));
         translateTransition.setCycleCount(1);
@@ -441,10 +446,15 @@ public class mainYardController implements Initializable  {
         stage.show();
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         moveHead(head);
+
+        levelLabel.setText("LV: " + level);
+        System.out.println(level);
+        System.out.println(name);
+        playerLabel.setText(name);
+
 
         AnimationTimer sun = new Sun(mainYardPane, current, tokenCounterLabel);
         sun.start();
