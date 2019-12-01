@@ -40,7 +40,7 @@ abstract public class Zombies extends Characters implements Serializable {
         return rabid;
     }
 
-    public void setRabid(String mode) {
-        this.rabid = mode.equals("Rabid"); //Returns true if rabid, else false
+    public void setRabid(Boolean mode) {
+        this.rabid = mode; //Returns true if rabid, else false
     }
 }

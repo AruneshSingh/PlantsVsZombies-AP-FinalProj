@@ -12,6 +12,7 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Pea extends AnimationTimer {
     int X,Y,damage,counter;
@@ -21,7 +22,8 @@ public class Pea extends AnimationTimer {
     private Map<ImageView, TranslateTransition> transitionMap;
     Map<ImageView,Zombies> zombieObject;
     ImageView plantImageView;
-    public Pea(int X, int Y, int damage, GridPane pane, Image image, ArrayList<ImageView> zombiesInRow,Map<ImageView, TranslateTransition> transitionMap,Map<ImageView,Zombies> zombieObject, ImageView plantImageView){
+    Set<String> placedPlants;
+    public Pea(int X, int Y, int damage, GridPane pane, Image image, ArrayList<ImageView> zombiesInRow, Map<ImageView, TranslateTransition> transitionMap, Map<ImageView,Zombies> zombieObject, ImageView plantImageView, Set<String> placedPlants){
         this.X = X;
         this.Y = Y;
         this.damage = damage;
@@ -31,13 +33,14 @@ public class Pea extends AnimationTimer {
         this.transitionMap = transitionMap;
         this.zombieObject = zombieObject;
         this.plantImageView = plantImageView;
+        this.placedPlants = placedPlants;
         counter = 0;
     }
 
     @Override
     public void handle(long l) {
-        if(plantImageView.getImage()==null){
-            stop();
+        if(plantImageView.getImage()==null||plantImageView.getId()!="Peashooter"){
+            this.stop();
             return;
         }
         if(zombiesInRow.size()!=0&&counter%60==0) {
@@ -54,7 +57,7 @@ public class Pea extends AnimationTimer {
             translateTransition.setCycleCount(1);
             translateTransition.setAutoReverse(false);
             translateTransition.play();
-            new PeaZombieCollisionHandler(view,zombiesInRow,zombieObject,transitionMap).start();
+            new PeaZombieCollisionHandler(view,zombiesInRow,zombieObject,transitionMap,plantImageView,placedPlants).start();
         }
         counter+=1;
     }

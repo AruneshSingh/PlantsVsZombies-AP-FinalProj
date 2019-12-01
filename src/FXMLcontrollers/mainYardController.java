@@ -19,7 +19,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
-import threads.Pea;
+import threads.*;
 import classes.Zombies;
 import threads.Sun;
 import threads.SunFlowerThread;
@@ -52,9 +52,10 @@ public class mainYardController implements Initializable, Serializable {
     public ImageView head;
     public Pane mainYardPane;
     public Label tokenCounterLabel, levelLabel, playerLabel;
+    public ImageView L1,L2,L3,L4,L5;
 
-    public Map<ImageView,Zombies> Zombie = new HashMap<ImageView,Zombies>();
-    public ArrayList<ArrayList<ImageView>> zombiesInRow = new ArrayList<ArrayList<ImageView>>();
+    private Map<ImageView,Zombies> Zombie = new HashMap<ImageView,Zombies>();
+    private ArrayList<ArrayList<ImageView>> zombiesInRow = new ArrayList<ArrayList<ImageView>>();
 
 
     private boolean shovelActive,speakerStatus,play,peaShooterSelected,iceShooterSelected;
@@ -97,6 +98,7 @@ public class mainYardController implements Initializable, Serializable {
                 temp.setScaleX(0.8);
                 temp.setScaleY(0.8);
                 temp.setScaleZ(0.8);
+
                 if(random < zombieArr[level-1][0]){
                     temp.setImage(new Image("images/zomies/normalZombie.gif"));
                     tempZombie = new Skinny();
@@ -113,6 +115,12 @@ public class mainYardController implements Initializable, Serializable {
                 else {
                     temp.setImage(new Image("images/zomies/footballZombie.gif"));
                     tempZombie = new Skinny2();
+                }
+                if(mode.equals("Rabid")) {
+                    tempZombie.setRabid(true);
+                }
+                else {
+                    tempZombie.setRabid(false);
                 }
                 zombiesInRow.get(i).add(temp);
                 mainYardPane.getChildren().add(temp);
@@ -190,14 +198,14 @@ public class mainYardController implements Initializable, Serializable {
                         }
                         break;
                     case "peashooter":
-//                        if(current.getTokenCounter()-100 < 0)
-//                            clickedAndDragged = null;
-//                        else {
+                        if(current.getTokenCounter()-100 < 0)
+                            clickedAndDragged = null;
+                        else {
                             clickedAndDragged = (new Image("images/plants/peashooterPlant.gif"));
                             current.setTokenCounter(current.getTokenCounter() - 100);
                             tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
                             peaShooterSelected = true;
-//                        }
+                        }
                         break;
                     case "snowPeaShooter":
                         if(current.getTokenCounter()-150 < 0)
@@ -227,14 +235,11 @@ public class mainYardController implements Initializable, Serializable {
                             tokenCounterLabel.setText(Integer.toString(current.getTokenCounter()));
                         }
                         break;
-
                 }
             }
         }
-        catch (ClassCastException e){
-
+        catch (ClassCastException e) {
         }
-//        System.out.println("Clicked");
     }
     public void imagePaneDrop(MouseEvent mouseEvent) {
         ImageView paneElement = (ImageView) mouseEvent.getSource();
@@ -250,16 +255,19 @@ public class mainYardController implements Initializable, Serializable {
                 case "sunflower":
                     newPlant = new Sunflower();
                     current.addToGrid(grid, newPlant ,row-1, col);
+
                     AnimationTimer sunflower = new SunFlowerThread(mainYardPane, current, tokenCounterLabel, xVal, yVal);
                     sunflower.start();
 //                    System.out.println(grid.get(row-1).get(col).getClass() + " " + (row-1) + col);
                     break;
                 case "peashooter":
                     newPlant =  new PeaShooter();
+                    paneElement.setId("Peashooter");
                     current.addToGrid(grid, newPlant,row-1, col);
                     break;
                 case "snowPeaShooter":
                     newPlant = new SnowPeaShooter();
+                    paneElement.setId("Peashooter");
                     current.addToGrid(grid, newPlant,row-1, col);
                     break;
                 case "walnut":
@@ -268,6 +276,7 @@ public class mainYardController implements Initializable, Serializable {
                     break;
                 case "cherrybomb":
                     newPlant = new CherryBomb();
+                    paneElement.setId("cherrybomb");
                     current.addToGrid(grid, newPlant,row-1, col);
                     break;
             }
@@ -286,7 +295,7 @@ public class mainYardController implements Initializable, Serializable {
                 peaX = GridPane.getColumnIndex(paneElement);
                 peaY = GridPane.getRowIndex(paneElement);
                 Image image = new Image("images/plants/pea.png");
-                AnimationTimer PeaThread = new Pea(peaX,peaY,10,(GridPane) paneElement.getParent(),image,zombiesInRow.get(peaY-1),transitionMap,Zombie,paneElement);
+                AnimationTimer PeaThread = new Pea(peaX,peaY,10,(GridPane) paneElement.getParent(),image,zombiesInRow.get(peaY-1),transitionMap,Zombie,paneElement,placedPlants);
                 PeaThread.start();
                 peaShooterSelected = false;
             }
@@ -295,7 +304,7 @@ public class mainYardController implements Initializable, Serializable {
                 iceY = GridPane.getRowIndex(paneElement);
 //                shotView.setId("20");
                 Image image = new Image("images/plants/snowPea.png");
-                AnimationTimer PeaThread = new Pea(iceX,iceY,20,(GridPane) paneElement.getParent(),image,zombiesInRow.get(iceY-1),transitionMap,Zombie,paneElement);
+                AnimationTimer PeaThread = new Pea(iceX,iceY,20,(GridPane) paneElement.getParent(),image,zombiesInRow.get(iceY-1),transitionMap,Zombie,paneElement,placedPlants);
                 PeaThread.start();
                 iceShooterSelected = false;
             }
@@ -307,7 +316,7 @@ public class mainYardController implements Initializable, Serializable {
 
             stopPea(peas.get(paneElement.toString()));
 
-            placedPlants.remove(paneElement.getId());
+            placedPlants.remove(paneElement.toString());
             shovelPane.setEffect(null);
             shovelActive = false;
         }
@@ -339,7 +348,6 @@ public class mainYardController implements Initializable, Serializable {
     public void moveLawnmover(MouseEvent mouseEvent) {
         lawnmover = (ImageView) mouseEvent.getSource();
         TranslateTransition translateTransition = new TranslateTransition();
-
         translateTransition.setDuration(Duration.millis(1000));
         translateTransition.setNode(lawnmover);
         translateTransition.setByX(1500);
@@ -449,6 +457,11 @@ public class mainYardController implements Initializable, Serializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         moveHead(head);
+        new Lawnmower(zombiesInRow.get(0),L1,Zombie).start();
+        new Lawnmower(zombiesInRow.get(1),L2,Zombie).start();
+        new Lawnmower(zombiesInRow.get(2),L3,Zombie).start();
+        new Lawnmower(zombiesInRow.get(3),L4,Zombie).start();
+        new Lawnmower(zombiesInRow.get(4),L5,Zombie).start();
 
         levelLabel.setText("LV: " + level);
         System.out.println(level);

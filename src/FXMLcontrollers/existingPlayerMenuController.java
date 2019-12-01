@@ -71,7 +71,9 @@ public class existingPlayerMenuController implements Initializable {
         panes.add(player2);
         panes.add(player3);
         panes.add(player4);
-
+        for(int i=0;i<savedGames.length;i++) {
+            System.out.println(savedGames[i]);
+        }
         for (int i = 0; i < Math.min(4, len); i++) {
             ((Label) panes.get(i).getChildren().get(0)).setText(savedGames[i].replace(".txt",""));
             ((Label) panes.get(i).getChildren().get(1)).setText(Integer.toString(readFile(savedGames[i])));
@@ -132,6 +134,7 @@ public class existingPlayerMenuController implements Initializable {
             String source = "src/savedFiles/" + name + ".txt";
             String dest = "src/gameFiles/currentUser.txt";
             File user = new File(dest);
+            user.delete();
             user.createNewFile();
             List<String> lines = Files.readAllLines(Paths.get(source), StandardCharsets.UTF_8);
             Files.write(Paths.get(dest), lines, StandardCharsets.UTF_8);
